@@ -67,24 +67,55 @@
   body[data-ov="grid"]    #ov-gallery { display: none; }
   body[data-ov="gallery"] #ov-grid    { display: none; }
   body[data-ov="gallery"][data-mode="overview"] { background: #0a0805; }
-  body[data-ov="grid"][data-mode="overview"]    { background: #efece4; }
+  body[data-ov="grid"][data-mode="overview"]    { background: #061A2E; }
 
-  /* ════════ Mode 1 · adaptive grid wall (fits one screen → centered light tilt; otherwise → comfortable size, vertical scroll) ════════ */
-  #ov-grid { display: flex; justify-content: center; perspective: 2200px; perspective-origin: 50% 42%;
-    background: radial-gradient(120% 90% at 50% 0%, #f4f1e9, #e7e3d8 75%); }
+  /* Animated tech background (fixed layers behind the wall, so they don't scroll).
+     Negative z-index keeps them above the navy base but behind the cards. */
+  body[data-ov="grid"][data-mode="overview"]::before,
+  body[data-ov="grid"][data-mode="overview"]::after {
+    content: ''; position: fixed; inset: -25%; z-index: -1; pointer-events: none;
+  }
+  body[data-ov="grid"][data-mode="overview"]::before {
+    background-image:
+      linear-gradient(rgba(102,153,204,0.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(102,153,204,0.13) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(115% 95% at 50% 38%, #000 52%, transparent 100%);
+            mask-image: radial-gradient(115% 95% at 50% 38%, #000 52%, transparent 100%);
+    animation: grid-pan 26s linear infinite;
+  }
+  body[data-ov="grid"][data-mode="overview"]::after {
+    background:
+      radial-gradient(38% 48% at 18% 22%, rgba(241,181,5,0.12), transparent 70%),
+      radial-gradient(46% 56% at 82% 72%, rgba(51,102,153,0.34), transparent 72%),
+      radial-gradient(52% 60% at 60% 14%, rgba(11,35,65,0.5), transparent 72%);
+    animation: glow-drift 30s ease-in-out infinite alternate;
+  }
+  @keyframes grid-pan { from { background-position: 0 0, 0 0; } to { background-position: 56px 56px, 56px 56px; } }
+  @keyframes glow-drift {
+    from { transform: translate3d(-2.5%, -1.5%, 0) scale(1.04); }
+    to   { transform: translate3d(2.5%, 1.5%, 0) scale(1.12); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body[data-ov="grid"][data-mode="overview"]::before,
+    body[data-ov="grid"][data-mode="overview"]::after { animation: none; }
+  }
+
+  /* ════════ Mode 1 · adaptive grid wall (flat, horizontally aligned; scale-to-fit or vertical scroll) ════════ */
+  #ov-grid { display: flex; justify-content: center; background: transparent; }
   body[data-grid="fit"]    #ov-grid { overflow: hidden;   align-items: center; }
   body[data-grid="scroll"] #ov-grid { overflow-y: auto; overflow-x: hidden; align-items: flex-start; padding: 74px 0 110px; }
   .wall-wrap { }
-  body[data-grid="fit"]    .wall-wrap { transform: translateY(-3vh); }
-  .wall { display: grid; gap: 20px; transform-origin: center center; margin: 0 auto; }  /* no preserve-3d: the whole wall is a single tilted plane, reliable hit-testing */
+  body[data-grid="fit"]    .wall-wrap { transform: translateY(-2vh); }
+  .wall { display: grid; gap: 24px; transform-origin: center center; margin: 0 auto; }
   #ov-grid .card {
     position: relative; aspect-ratio: 16/9; border-radius: 9px; overflow: hidden; background: #fff; cursor: pointer;
-    box-shadow: 0 16px 34px rgba(40,34,24,0.20), 0 3px 10px rgba(40,34,24,0.12);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.42), 0 2px 8px rgba(0,0,0,0.3);
     transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s;
   }
   #ov-grid .card:hover {
-    transform: scale(1.18);
-    box-shadow: 0 48px 92px rgba(40,34,24,0.36), 0 14px 30px rgba(40,34,24,0.22); z-index: 20;
+    transform: scale(1.12);
+    box-shadow: 0 36px 80px rgba(0,0,0,0.55), 0 0 0 2px rgba(241,181,5,0.55), 0 10px 28px rgba(0,0,0,0.4); z-index: 20;
   }
 
   /* ════════ Mode 2 · infinite gallery ════════ */
@@ -117,11 +148,11 @@
   #ov-gallery .card:hover .num { opacity: 1; }
 
   .overview-title { position: fixed; top: 24px; left: 0; right: 0; text-align: center; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; z-index: 40; pointer-events: none; }
-  body[data-ov="grid"]    .overview-title { color: #5a5346; opacity: 0.66; }
+  body[data-ov="grid"]    .overview-title { color: rgba(199,209,225,0.75); text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
   body[data-ov="gallery"] .overview-title { color: rgba(244,238,224,0.7); text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
 
   .start-btn { position: fixed; bottom: 26px; right: 26px; border: 0; padding: 13px 24px; border-radius: 999px; font-size: 15px; font-family: inherit; letter-spacing: 0.04em; cursor: pointer; z-index: 200; transition: transform .18s, box-shadow .18s; }
-  body[data-ov="grid"]    .start-btn { background: #1a1712; color: #fff; box-shadow: 0 8px 28px rgba(40,34,24,0.28); }
+  body[data-ov="grid"]    .start-btn { background: #F1B505; color: #0B2341; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
   body[data-ov="gallery"] .start-btn { background: #f4eee0; color: #1a1712; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
   .start-btn:hover { transform: translateY(-2px); }
 
@@ -268,25 +299,19 @@
     wall.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
     wall.style.gap = gap + 'px';
     wall.style.width = baseW + 'px';
-    // single plane (no preserve-3d) → no overlap, clickable at any angle; both fit and scroll get a strong diagonal tilt
+    // flat wall, horizontally aligned: fit one screen with scale-to-fit, else vertical scroll
     if (wallH <= vh * 0.80) {
       document.body.setAttribute('data-grid', 'fit');
-      const rx = Math.max(11, Math.min(15, 15 - (rows - 2) * 1.1));
-      const rz = Math.max(8, Math.min(11, 11 - (rows - 2) * 0.7));
-      wall.style.setProperty('--rx', rx); wall.style.setProperty('--rz', rz);
       wall.style.transformOrigin = 'center center';
-      const tilt = 'rotateX(' + rx + 'deg) rotateZ(-' + rz + 'deg)';
-      wall.style.transform = tilt;
+      wall.style.transform = 'none';
       const r = wall.getBoundingClientRect();
-      let s = Math.min(vw * 0.92 / r.width, vh * 0.80 / r.height);
+      let s = Math.min(vw * 0.92 / r.width, vh * 0.82 / r.height);
       s = Math.max(0.6, Math.min(s, 1.6));
-      wall.style.transform = 'scale(' + s + ') ' + tilt;
+      wall.style.transform = 'scale(' + s + ')';
     } else {
-      // many pages: comfortable size with vertical scroll + strong diagonal tilt; transform-origin follows scroll → keeps rotateZ from flinging far rows off-screen on tall walls
       document.body.setAttribute('data-grid', 'scroll');
-      wall.style.setProperty('--rx', 14); wall.style.setProperty('--rz', 7);
-      wall.style.transform = 'rotateX(14deg) rotateZ(-7deg)';
-      updateScrollOrigin();
+      wall.style.transformOrigin = 'center top';
+      wall.style.transform = 'none';
     }
     wall.querySelectorAll('.card .thumb').forEach(t => { const c = t.parentElement; if (c.clientWidth) t.style.transform = 'scale(' + (c.clientWidth / W) + ')'; });
   }
