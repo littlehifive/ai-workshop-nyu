@@ -1,0 +1,10 @@
+# Local tooling for screenshot/PDF verification — not part of the site
+node_modules/
+_verify/
+
+# Build/verification artifacts
+*.log
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
