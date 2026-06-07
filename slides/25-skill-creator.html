@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Activity 4 · Build a skill</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<style>
+  :root {
+    --navy: #003366; --navy-deep: #0B2341; --gold: #F1B505; --white: #FFFFFF;
+    --surface: #FFFFFF; --surface-subtle: #F8F9FA; --ink: #212529;
+    --ink-secondary: #495057; --ink-muted: #868E96; --border: #DEE2E6;
+    --font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; margin: 0; overflow: hidden;
+    font-family: var(--font); background: var(--surface-subtle); color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .slide { width: 1920px; height: 1080px; padding: 76px 120px 60px; display: flex; flex-direction: column; }
+  .header { margin-bottom: 30px; }
+  .eyebrow {
+    font-size: 22px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #ECAA00; margin: 0 0 22px;
+  }
+  .eyebrow .opt { color: var(--ink-muted); }
+  h1 {
+    margin: 0; font-size: 76px; font-weight: 800; line-height: 1; letter-spacing: -0.02em;
+    color: var(--navy); display: inline-block;
+  }
+  h1 .accent { color: var(--gold); }
+  .goal { margin: 22px 0 0; font-size: 30px; font-weight: 500; color: var(--ink-secondary); max-width: 1500px; line-height: 1.35; }
+  .columns { display: flex; gap: 72px; flex: 1; align-items: stretch; }
+  .steps-col { flex: 1.5; }
+  .side-col { flex: 1; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+  .steps { list-style: none; padding: 0; margin: 0; }
+  .steps li {
+    display: flex; align-items: flex-start; gap: 32px;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .steps li:first-child { padding-top: 0; }
+  .steps li:last-child { border-bottom: 0; }
+  .num { font-size: 52px; font-weight: 900; color: var(--gold); line-height: 1; width: 60px; flex-shrink: 0; letter-spacing: -0.02em; }
+  .step-text { font-size: 29px; font-weight: 500; line-height: 1.32; color: var(--ink); padding-top: 2px; }
+  .step-text .em { color: var(--navy); font-weight: 700; }
+  .step-text code {
+    font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 25px;
+    background: #EEF1F4; color: var(--navy); padding: 2px 10px; border-radius: 6px;
+  }
+  .gain {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 6px solid var(--gold); border-radius: 12px;
+    box-shadow: 0 4px 8px hsl(210 50% 20% / 0.08); padding: 28px 38px;
+  }
+  .gain .label { font-size: 20px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin: 0 0 16px; }
+  .gain .q { font-size: 30px; font-weight: 600; line-height: 1.36; color: var(--navy); margin: 0; }
+  .gain .q .accent { color: var(--gold); }
+  .caveat {
+    background: var(--navy-deep); border-radius: 12px;
+    box-shadow: 0 8px 24px hsl(210 50% 20% / 0.12); padding: 26px 38px;
+  }
+  .caveat .label { font-size: 20px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 14px; }
+  .caveat .text { font-size: 26px; font-weight: 500; line-height: 1.4; color: var(--white); margin: 0; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header">
+      <p class="eyebrow" data-reveal>Activity 4 &middot; <span class="opt">Optional</span> &middot; 15 Min</p>
+      <h1 data-reveal>Teach Claude <span class="accent">how you work</span></h1>
+      <p class="goal" data-reveal>Turn a task you repeat into a reusable skill, so Claude reproduces your method instead of starting from scratch each time. This is the deepest level of &ldquo;remember&rdquo; from earlier.</p>
+    </div>
+
+    <div class="columns">
+      <div class="steps-col">
+        <ol class="steps">
+          <li data-reveal><span class="num">1</span><span class="step-text">Pick a task you do the <span class="em">same way</span> often: formatting a report, screening abstracts, drafting a standard reply.</span></li>
+          <li data-reveal><span class="num">2</span><span class="step-text">In Claude, start the skill-creator with <code>/skill-creator</code> and describe the task in plain language.</span></li>
+          <li data-reveal><span class="num">3</span><span class="step-text">Answer its questions. It scaffolds the skill for you, writing the instructions and bundling any resources.</span></li>
+          <li data-reveal><span class="num">4</span><span class="step-text">Run the skill on a real example, then refine the wording until the output matches how <span class="em">you</span> would do it.</span></li>
+        </ol>
+      </div>
+
+      <div class="side-col">
+        <div class="gain" data-reveal>
+          <p class="label">What you walk away with</p>
+          <p class="q">A reusable skill that captures your process, that Claude applies <span class="accent">on demand</span> and that you can share with colleagues.</p>
+        </div>
+        <div class="caveat" data-reveal>
+          <p class="label">Before you start</p>
+          <p class="text">Skills run in the Claude desktop app on a paid plan (Pro, Max, Team, or Enterprise). They are not available on the free tier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

@@ -8,17 +8,25 @@
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   :root { --brick: #B3361F; }
-  .slide { padding: 86px 120px 64px; }
-  .header { margin-bottom: 40px; }
+  .slide { padding: 72px 120px 56px; }
+  .header { margin-bottom: 24px; }
   .eyebrow {
     font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--ink-muted);
-    margin: 0 0 18px;
+    margin: 0 0 16px;
   }
   h1 {
     margin: 0;
-    font-size: 60px; font-weight: 800; line-height: 1.06; letter-spacing: -0.02em;
+    font-size: 56px; font-weight: 800; line-height: 1.06; letter-spacing: -0.02em;
     color: var(--navy); max-width: 1560px;
+  }
+  .subhead {
+    margin: 16px 0 0; font-size: 24px; font-weight: 400; line-height: 1.4;
+    color: var(--ink-secondary); max-width: 1560px;
+  }
+  .chart-cap {
+    font-size: 19px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-muted); margin: 0 0 18px;
   }
 
   .body { display: flex; gap: 64px; flex: 1; align-items: stretch; }
@@ -109,10 +117,12 @@
     <div class="header">
       <p class="eyebrow" data-reveal>Part 4 &middot; Takeaways</p>
       <h1 data-reveal>Confidence rises whether or not the AI is right</h1>
+      <p class="subhead" data-reveal>In the study, people solved tricky reasoning problems on their own or with an AI assistant that was deliberately correct half the time and wrong half the time.</p>
     </div>
 
     <div class="body">
       <div class="chart-wrap" data-reveal>
+        <p class="chart-cap">Accuracy &middot; share of problems answered correctly</p>
         <div class="chart">
           <div class="bar-col">
             <span class="bar-num">45.8%</span>
@@ -139,7 +149,7 @@
       <div class="side">
         <div class="callout" data-reveal="right" style="--reveal-delay:1.0s">
           <p class="label">Reported confidence</p>
-          <p class="text"><span class="big">77%</span> with AI vs <span class="big">65.3%</span> alone. It did not fall even as the AI kept being wrong.</p>
+          <p class="text">How sure people were that their own answer was right: <span class="big">77%</span> with AI vs <span class="big">65.3%</span> alone. It did not fall even as the AI kept being wrong.</p>
         </div>
         <p class="source" data-reveal="right" style="--reveal-delay:1.1s">Shaw &amp; Nave, 2026 &middot; 1,372 participants across three studies.</p>
       </div>

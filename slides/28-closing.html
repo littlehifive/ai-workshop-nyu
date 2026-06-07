@@ -30,31 +30,29 @@
     color: var(--white); max-width: 1500px;
   }
   .close-title .accent { color: var(--gold); }
-  .passage {
-    margin: 44px 0 0;
-    font-size: 29px; font-weight: 400; line-height: 1.52;
-    color: #D5E0EC; max-width: 1540px;
-  }
-  .passage .k { color: var(--white); font-weight: 600; }
-  .resources {
-    margin: 48px 0 0;
-    display: flex; flex-direction: column; gap: 16px;
-  }
-  .resources .res {
-    font-size: 27px; font-weight: 400; line-height: 1.4; color: #D5E0EC;
-    display: flex; align-items: baseline; gap: 18px;
-  }
-  .resources .res .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; transform: translateY(-3px); }
-  .resources .res .k { color: var(--white); font-weight: 600; }
   .hero {
     margin: 0;
-    padding-top: 56px;
-    border-top: 1px solid rgba(154,179,204,0.28);
-    font-size: 44px; font-weight: 700; line-height: 1.34;
-    color: var(--white); max-width: 1500px;
+    font-size: 52px; font-weight: 700; line-height: 1.32;
+    color: var(--white); max-width: 1540px;
   }
   .hero .accent { color: var(--gold); }
-  .hero-wrap { margin-top: 64px; }
+  .hero-wrap { margin-top: 52px; }
+  .contact {
+    margin-top: 72px;
+    padding-top: 44px;
+    border-top: 1px solid rgba(154,179,204,0.28);
+    display: flex; align-items: baseline; gap: 28px; flex-wrap: wrap;
+  }
+  .contact .label {
+    font-size: 21px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted-on-navy);
+  }
+  .contact a {
+    font-size: 30px; font-weight: 700; color: var(--white);
+    text-decoration: none; border-bottom: 2px solid var(--gold);
+    padding-bottom: 3px; transition: color 0.2s;
+  }
+  .contact a:hover { color: var(--gold); }
 </style>
 </head>
 <body class="dark">
@@ -66,14 +64,14 @@
 
     <h1 class="close-title" data-reveal="scale">Keep the work. <span class="accent">Keep the judgment.</span></h1>
 
-    <div class="resources" data-reveal style="--reveal-delay:.55s">
-      <p class="res"><span class="dot"></span><span><span class="k">agenticworkflowsclub.org/ai-101</span>, today's Part 1 in full</span></p>
-      <p class="res"><span class="dot"></span><span><span class="k">"Thinking, Fast, Slow, and Artificially"</span>, Wharton Executive Education, May 2026</span></p>
-      <p class="res"><span class="dot"></span><span><span class="k">Zezhen (Michael) Wu</span>, The Agency Fund</span></p>
+    <div class="hero-wrap" data-reveal style="--reveal-delay:.55s">
+      <p class="hero">Offload the work whenever it helps. Never surrender the judgment: decide, deliberately, <span class="accent">which decisions remain yours</span>.</p>
     </div>
 
-    <div class="hero-wrap" data-reveal style="--reveal-delay:1.15s">
-      <p class="hero">Offload the work whenever it helps. Never surrender the judgment: decide, deliberately, <span class="accent">which decisions remain yours</span>.</p>
+    <div class="contact" data-reveal style="--reveal-delay:1.1s">
+      <span class="label">Questions, anytime</span>
+      <a href="https://www.linkedin.com/in/zezhenwu/" target="_blank" rel="noopener">linkedin.com/in/zezhenwu</a>
+      <a href="mailto:michael@agency.fund">michael@agency.fund</a>
     </div>
   </div>
 <script src="shared/anim.js"></script>
