@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Caveats</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .a-header { margin-bottom: 64px; }
+  .caveats { display: flex; flex-direction: column; flex: 1; justify-content: center; }
+  .cav {
+    display: flex; align-items: flex-start; gap: 56px;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cav:first-child { padding-top: 0; }
+  .cav:last-child { border-bottom: 0; padding-bottom: 0; }
+  .cav .num {
+    font-size: 96px; font-weight: 900; color: var(--gold); line-height: 0.9;
+    width: 110px; flex-shrink: 0; letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .cav .content { padding-top: 6px; }
+  .cav .ctitle {
+    font-size: 40px; font-weight: 800; color: var(--navy); line-height: 1.1;
+    margin: 0 0 14px;
+  }
+  .cav .cbody {
+    font-size: 28px; font-weight: 400; line-height: 1.42; color: var(--ink-secondary);
+    margin: 0; max-width: 1380px;
+  }
+  .cav .cbody .em { font-weight: 700; color: var(--navy); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="a-header">
+      <p class="eyebrow">Part 4 &middot; Takeaways</p>
+      <h1>Three caveats to carry out of this room</h1>
+    </div>
+
+    <div class="caveats">
+      <div class="cav">
+        <span class="num">1</span>
+        <div class="content">
+          <p class="ctitle">Tooling</p>
+          <p class="cbody">Products change often, but the underlying capabilities (<span class="em">ask, do, remember</span>) stay stable.<br>Choose by where your documents live, and re-evaluate quarterly at most.</p>
+        </div>
+      </div>
+
+      <div class="cav">
+        <span class="num">2</span>
+        <div class="content">
+          <p class="ctitle">Quality</p>
+          <p class="cbody"><span class="em">&ldquo;Seems fine&rdquo; is not evidence.</span><br>Keep the test questions you red-teamed with today, and run them again whenever a tool ships a new model.</p>
+        </div>
+      </div>
+
+      <div class="cav">
+        <span class="num">3</span>
+        <div class="content">
+          <p class="ctitle">Agency</p>
+          <p class="cbody">AI produces the draft, and <span class="em">you make the decisions.</span><br>Once you stop verifying its output, the work is no longer research.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

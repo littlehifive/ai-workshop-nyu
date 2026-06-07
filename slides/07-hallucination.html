@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hallucination</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .hl-body { display: flex; gap: 64px; flex: 1; margin-top: 44px; align-items: stretch; }
+  .hl-left { flex: 1.05; display: flex; flex-direction: column; }
+  .hl-right { flex: 1; display: flex; flex-direction: column; gap: 28px; }
+
+  /* mock AI answer card */
+  .mock {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .mock .bar {
+    background: var(--surface-subtle);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 28px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 20px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .mock .bar .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--border); }
+  .mock .inner { padding: 36px 38px; display: flex; flex-direction: column; gap: 22px; flex: 1; }
+  .mock .ask { font-size: 25px; font-weight: 600; color: var(--ink-secondary); margin: 0; }
+  .mock .ans { font-size: 27px; font-weight: 400; color: var(--ink); line-height: 1.42; margin: 0; }
+  .mock .cite {
+    background: var(--surface-subtle);
+    border: 1px dashed var(--ink-muted);
+    border-radius: 10px;
+    padding: 22px 26px;
+    font-size: 24px; font-weight: 500; color: var(--ink-secondary); line-height: 1.4;
+  }
+  .mock .flag {
+    margin-top: auto;
+    display: flex; align-items: center; gap: 14px;
+    font-size: 21px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .mock .flag .pill {
+    background: var(--gold); color: var(--navy-deep);
+    padding: 8px 16px; border-radius: 999px; font-weight: 800;
+  }
+
+  /* navy quote panel */
+  .quote-panel {
+    background: var(--navy-deep);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px hsl(210 50% 20% / 0.12);
+    padding: 44px 46px;
+    flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .quote-panel .label {
+    font-size: 20px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin: 0 0 20px;
+  }
+  .quote-panel .q {
+    font-size: 35px; font-weight: 700; line-height: 1.32; color: var(--white); margin: 0;
+  }
+  .quote-panel .q .accent { color: var(--gold); }
+
+  /* grounding definition */
+  .grounding {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 30px 36px;
+  }
+  .grounding .t { font-size: 27px; font-weight: 800; color: var(--navy); margin: 0 0 8px; }
+  .grounding .d { font-size: 25px; font-weight: 400; color: var(--ink-secondary); line-height: 1.36; margin: 0; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow">Part 1 &middot; AI 101</p>
+    <h1>When the patterns are thin, it guesses, and it does so <span class="accent">confidently</span></h1>
+
+    <div class="hl-body">
+      <div class="hl-left">
+        <div class="mock">
+          <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;&nbsp;AI Answer</div>
+          <div class="inner">
+            <p class="ask">&ldquo;Cite a study on this effect.&rdquo;</p>
+            <p class="ans">Certainly. A frequently cited source is:</p>
+            <div class="cite">Hartman, L. &amp; Okonkwo, R. (2019). &ldquo;Longitudinal effects of grounding on recall.&rdquo; <strong>Journal of Cognitive Methods</strong>, 14(3), 221&ndash;248.</div>
+            <div class="flag"><span class="pill">Fabricated</span> it reads as fluent and plausible, yet the source does not exist</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hl-right">
+        <div class="quote-panel">
+          <p class="label">From AI 101</p>
+          <p class="q">The risk is not that AI hallucinates. It is that AI gets deployed <span class="accent">without grounding</span>.</p>
+        </div>
+        <div class="grounding">
+          <p class="t">Grounding</p>
+          <p class="d">Requiring the model to answer from sources you supply, with citations you can check.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

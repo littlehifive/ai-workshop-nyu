@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Closing</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  :root { --muted-on-navy: #9AB3CC; }
+  body.dark .slide { justify-content: center; position: relative; padding: 130px 150px; }
+  .topbar {
+    position: absolute;
+    top: 110px; left: 150px;
+    display: flex; align-items: center; gap: 22px;
+  }
+  .topbar .tick { width: 64px; height: 5px; background: var(--gold); border-radius: 3px; }
+  .topbar .wordmark {
+    font-size: 21px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .close-eyebrow {
+    font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted-on-navy);
+    margin: 0 0 34px;
+  }
+  .close-title {
+    margin: 0;
+    font-size: 80px; font-weight: 800; line-height: 1.08; letter-spacing: -0.02em;
+    color: var(--white); max-width: 1500px;
+  }
+  .close-title .accent { color: var(--gold); }
+  .passage {
+    margin: 44px 0 0;
+    font-size: 29px; font-weight: 400; line-height: 1.52;
+    color: #D5E0EC; max-width: 1540px;
+  }
+  .passage .k { color: var(--white); font-weight: 600; }
+  .resources {
+    margin: 48px 0 0;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .resources .res {
+    font-size: 27px; font-weight: 400; line-height: 1.4; color: #D5E0EC;
+    display: flex; align-items: baseline; gap: 18px;
+  }
+  .resources .res .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; transform: translateY(-3px); }
+  .resources .res .k { color: var(--white); font-weight: 600; }
+  .hero {
+    margin: 0;
+    padding-top: 56px;
+    border-top: 1px solid rgba(154,179,204,0.28);
+    font-size: 44px; font-weight: 700; line-height: 1.34;
+    color: var(--white); max-width: 1500px;
+  }
+  .hero .accent { color: var(--gold); }
+  .hero-wrap { margin-top: 64px; }
+</style>
+</head>
+<body class="dark">
+  <div class="slide">
+    <div class="topbar">
+      <span class="tick"></span>
+      <span class="wordmark">Agentic Workflows Club</span>
+    </div>
+
+    <h1 class="close-title">A last idea to take home: <span class="accent">System 3</span></h1>
+
+    <p class="passage">Wharton researchers Steven Shaw and Gideon Nave argue that AI now forms a third system of thinking alongside Kahneman's fast intuition and slow deliberation. <span class="k">Offloading</span> a task to AI, the way you hand arithmetic to a calculator, keeps your reasoning in control. <span class="k">Cognitive surrender</span> is different: the AI makes the decision and you adopt it as your own without noticing the transfer. In their experiments, people's confidence rose whether the AI was right or wrong.</p>
+
+    <div class="resources">
+      <p class="res"><span class="dot"></span><span><span class="k">agenticworkflowsclub.org/ai-101</span>, today's Part 1 in full</span></p>
+      <p class="res"><span class="dot"></span><span><span class="k">"Thinking, Fast, Slow, and Artificially"</span>, Wharton Executive Education, May 2026</span></p>
+      <p class="res"><span class="dot"></span><span><span class="k">Zezhen (Michael) Wu</span>, The Agency Fund</span></p>
+    </div>
+
+    <div class="hero-wrap">
+      <p class="hero">Offload the work whenever it helps. Never surrender the judgment: decide, deliberately, <span class="accent">which decisions remain yours</span>.</p>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

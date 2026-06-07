@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>17 · Ask vs Do</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .av-grid { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .av-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; box-shadow: var(--shadow-md);
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .av-head {
+    background: var(--navy-deep); color: var(--white);
+    padding: 30px 44px; display: flex; align-items: baseline; gap: 20px;
+  }
+  .av-head .k { font-size: 40px; font-weight: 800; letter-spacing: 0.02em; }
+  .av-head .sub { font-size: 24px; font-weight: 500; color: var(--slate-blue); }
+  .av-body { padding: 40px 44px 44px; }
+  .av-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px; }
+  .av-list li { display: flex; align-items: flex-start; gap: 22px; font-size: 30px; font-weight: 500; line-height: 1.36; color: var(--ink); }
+  .av-list li::before {
+    content: ''; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 11px;
+  }
+
+  .av-caveat {
+    background: var(--navy-deep); border-radius: 12px;
+    box-shadow: 0 8px 24px hsl(210 50% 20% / 0.12);
+    padding: 36px 44px; margin-top: auto;
+  }
+  .av-caveat .label {
+    font-size: 20px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold); margin: 0 0 14px;
+  }
+  .av-caveat .text { font-size: 32px; font-weight: 600; line-height: 1.35; color: var(--white); margin: 0; }
+  .av-caveat .text .accent { color: var(--gold); font-weight: 800; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow">Part 2 &middot; The Tool Landscape</p>
+    <h1>Ask when you're <span class="accent">thinking</span>; Do when you're <span class="accent">producing</span></h1>
+
+    <div class="av-grid">
+      <div class="av-card">
+        <div class="av-head"><span class="k">ASK</span><span class="sub">you're thinking</span></div>
+        <div class="av-body">
+          <ul class="av-list">
+            <li>Exploring a topic</li>
+            <li>Checking your understanding</li>
+            <li>Low stakes per answer</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="av-card">
+        <div class="av-head"><span class="k">DO</span><span class="sub">you're producing</span></div>
+        <div class="av-body">
+          <ul class="av-list">
+            <li>Repetitive, multi-file work</li>
+            <li>A defined deliverable</li>
+            <li>You can verify the result</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="av-caveat">
+      <p class="label">Bottom line</p>
+      <p class="text">Delegate a task only when you can <span class="accent">verify the result</span> yourself.</p>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

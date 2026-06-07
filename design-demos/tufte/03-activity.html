@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF8;
+    --ink:#1A1A18;
+    --soft:#56544E;
+    --rule:#D8D5CE;
+    --accent:#A33B2E;
+  }
+  *{box-sizing:border-box;}
+  body{
+    width:1920px;height:1080px;margin:0;overflow:hidden;
+    background:var(--paper);color:var(--ink);
+    font-family:"Inter",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .frame{
+    position:absolute;inset:0;
+    padding:118px 180px;
+    display:flex;flex-direction:column;
+  }
+  .kicker{
+    font-family:"Inter",sans-serif;
+    font-size:17px;font-weight:500;
+    letter-spacing:0.32em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  .kicker .dot{color:var(--rule);margin:0 12px;font-weight:400;}
+  h1{
+    font-family:"Source Serif 4",serif;
+    font-weight:600;font-size:72px;line-height:1.04;
+    letter-spacing:-0.015em;margin:24px 0 0 0;
+  }
+  .goal{
+    font-family:"Source Serif 4",serif;
+    font-style:italic;font-size:32px;color:var(--soft);
+    margin:18px 0 0 0;
+  }
+  .toprule{height:1px;background:var(--rule);border:0;margin:46px 0 8px 0;}
+
+  .body{display:grid;grid-template-columns:1.35fr 1fr;column-gap:110px;}
+
+  ol{list-style:none;margin:30px 0 0 0;padding:0;}
+  ol li{
+    display:grid;
+    grid-template-columns:74px 1fr;
+    align-items:baseline;
+    margin-bottom:34px;
+  }
+  ol li .num{
+    font-family:"Source Serif 4",serif;
+    font-size:40px;font-weight:400;
+    color:var(--accent);
+  }
+  ol li .step{
+    font-family:"Source Serif 4",serif;
+    font-size:31px;font-weight:400;line-height:1.34;
+    color:var(--ink);
+  }
+
+  .side{padding-top:30px;}
+  .debrief-label{
+    font-family:"Inter",sans-serif;
+    font-size:15px;font-weight:500;
+    letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--soft);
+  }
+  .debrief{
+    font-family:"Source Serif 4",serif;
+    font-style:italic;font-size:34px;line-height:1.36;
+    color:var(--ink);margin:18px 0 0 0;
+  }
+
+  .spacer{flex:1;}
+  .footrule{height:1px;background:var(--rule);border:0;margin:0 0 28px 0;}
+  .caveat{
+    font-family:"Inter",sans-serif;
+    font-size:24px;line-height:1.5;font-weight:400;
+    color:var(--soft);max-width:1400px;
+  }
+  .caveat .accent{color:var(--accent);font-weight:500;}
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="kicker">Activity 3<span class="dot">·</span>15 min</div>
+    <h1>Hallucination hunt</h1>
+    <p class="goal">Feel the difference grounding makes.</p>
+    <hr class="toprule">
+
+    <div class="body">
+      <ol>
+        <li><span class="num">1</span><span class="step">Pick a question you already know the answer to, from your own documents</span></li>
+        <li><span class="num">2</span><span class="step">Ask a bare chatbot — no files attached</span></li>
+        <li><span class="num">3</span><span class="step">Ask the same question in your notebook with documents loaded</span></li>
+        <li><span class="num">4</span><span class="step">Fact-check both answers against the source</span></li>
+      </ol>
+
+      <div class="side">
+        <div class="debrief-label">Debrief</div>
+        <p class="debrief">Which answer sounded more confident — and which one was right?</p>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <hr class="footrule">
+    <p class="caveat">Grounded &ne; guaranteed. <span class="accent">Citations are leads to verify, not proof.</span></p>
+  </div>
+</body>
+</html>

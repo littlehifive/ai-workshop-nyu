@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+  REFERENCE / STANDARD-BEARER: Stripe Press editorial design language (stripe.press + Stripe brand system)
+  Verified design DNA (WebSearch, June 2026):
+   1. Warm cream "canvas" backgrounds — Canvas Cream #f5e9d4 used as a feature-band fill; the brand's
+      chromatic interlude / atmospheric backdrop that reads calm and editorial, not corporate-bright.
+   2. Light-weight grotesque display type (Söhne ~300) with NEGATIVE letter-spacing (-1.4px to -0.64px)
+      — Stripe's editorial-density display signature; quiet, confident, never shouty.
+   3. Tabular lining figures (tnum) used for any numeric — the brand's quiet "financial-data" signal;
+      paired with restrained ink-on-cream contrast and generous whitespace (book-page composition).
+  FONT SUBSTITUTION (Google Fonts approximations of proprietary Stripe faces):
+   - Newsreader  -> serif editorial display (stand-in for Stripe Press book serif composition)
+   - Inter       -> Söhne grotesque sans for labels/body, used at light weights w/ negative tracking
+  Palette: ink #1a1a17, cream canvas #f5e9d4, soft canvas #faf4e8, line #e3d5bd, accent ruby #b3361f.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; margin: 0; overflow: hidden;
+    background: #f5e9d4;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a17;
+    position: relative;
+  }
+  /* subtle paper-texture / canvas interlude band, Stripe Press cream */
+  .band {
+    position: absolute; left: 0; top: 0; width: 1920px; height: 14px;
+    background: #b3361f;
+  }
+  .frame {
+    position: absolute; left: 150px; top: 150px;
+    width: 1620px; height: 780px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .top { }
+  .eyebrow {
+    font-size: 19px; font-weight: 600; letter-spacing: 3.5px;
+    text-transform: uppercase; color: #b3361f;
+    margin: 0 0 50px 0;
+  }
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: 116px;
+    line-height: 1.02;
+    letter-spacing: -2.6px;
+    margin: 0 0 40px 0;
+    max-width: 1480px;
+    color: #1a1a17;
+  }
+  .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 33px;
+    line-height: 1.45;
+    letter-spacing: -0.4px;
+    color: #4a4640;
+    max-width: 1180px;
+    margin: 0;
+  }
+  .bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    border-top: 1px solid #e3d5bd;
+    padding-top: 28px;
+  }
+  .presenter {
+    font-size: 25px; font-weight: 500; letter-spacing: -0.3px; color: #1a1a17;
+  }
+  .footer {
+    font-size: 20px; font-weight: 400; letter-spacing: 0.2px; color: #8a8275;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+</head>
+<body>
+  <div class="band"></div>
+  <div class="frame">
+    <div class="top">
+      <p class="eyebrow">A Hands-On Workshop &middot; NYU</p>
+      <h1>AI &amp; Knowledge Management for Researchers</h1>
+      <p class="subtitle">What generative AI actually is, which tools matter, and how to make them answer faithfully from your documents.</p>
+    </div>
+    <div class="bottom">
+      <div class="presenter">Zezhen (Michael) Wu &mdash; The Agency Fund</div>
+      <div class="footer">agenticworkflowsclub.org/ai-101 &middot; June 2026</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Automate</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  h1 { font-size: 56px; max-width: 1620px; }
+  .au-lead {
+    margin: 40px 0 0;
+    font-size: 29px; font-weight: 400; line-height: 1.5; color: var(--ink-secondary);
+    max-width: 1560px;
+  }
+  .au-lead strong { color: var(--navy); font-weight: 700; }
+  .au-examples {
+    margin-top: 48px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;
+  }
+  .au-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 36px 40px;
+  }
+  .au-card .k {
+    font-size: 20px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-muted); margin: 0 0 14px;
+  }
+  .au-card .v { font-size: 26px; font-weight: 400; color: var(--ink); line-height: 1.42; margin: 0; }
+  .au-caveat {
+    margin-top: auto;
+    background: var(--navy-deep);
+    border-radius: 12px;
+    padding: 36px 48px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .au-caveat .label {
+    font-size: 20px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .au-caveat .text { font-size: 28px; font-weight: 500; color: var(--white); line-height: 1.45; }
+  .au-caveat .text .gold { color: var(--gold); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow">Part 2 &middot; The Tool Landscape</p>
+    <h1>A fourth capability is emerging: AI that <span class="accent">automates</span> work on your behalf</h1>
+
+    <p class="au-lead">Beyond asking, doing, and remembering, the newest systems learn enough about your work to carry out <strong>recurring tasks on their own</strong>, on a schedule or in response to events, under supervision rules that you define. You set the standing instructions once; the system runs and reports back.</p>
+
+    <div class="au-examples">
+      <div class="au-card">
+        <p class="k">For a researcher</p>
+        <p class="v">A weekly scan of new papers in your subfield, summarized and delivered every Monday morning.</p>
+      </div>
+      <div class="au-card">
+        <p class="k">For a team</p>
+        <p class="v">Meeting recordings transcribed, summarized, and filed to the right project folder without anyone asking.</p>
+      </div>
+      <div class="au-card">
+        <p class="k">For a study</p>
+        <p class="v">A data-quality check that runs after each survey wave and flags exceptions for human review.</p>
+      </div>
+    </div>
+
+    <div class="au-caveat">
+      <span class="label">Outside today's scope</span>
+      <span class="text">We will not cover automation today. The principle you will practice applies here with greater force: the more a system acts <span class="gold">for</span> you, the more deliberately you must verify its work.</span>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

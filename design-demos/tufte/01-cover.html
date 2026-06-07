@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF8;
+    --ink:#1A1A18;
+    --soft:#56544E;
+    --rule:#D8D5CE;
+    --accent:#A33B2E;
+  }
+  *{box-sizing:border-box;}
+  body{
+    width:1920px;height:1080px;margin:0;overflow:hidden;
+    background:var(--paper);color:var(--ink);
+    font-family:"Inter",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .frame{
+    position:absolute;inset:0;
+    padding:150px 220px;
+    display:flex;flex-direction:column;
+  }
+  .kicker{
+    font-family:"Inter",sans-serif;
+    font-size:18px;font-weight:500;
+    letter-spacing:0.32em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  .kicker .dot{color:var(--rule);margin:0 14px;font-weight:400;}
+  .hair{
+    height:1px;background:var(--rule);border:0;
+    margin:46px 0 60px 0;width:100%;
+  }
+  h1{
+    font-family:"Source Serif 4",serif;
+    font-weight:600;font-size:104px;line-height:1.04;
+    letter-spacing:-0.015em;margin:0;
+    max-width:1180px;
+  }
+  .subtitle{
+    font-family:"Source Serif 4",serif;
+    font-weight:400;font-style:italic;
+    font-size:38px;line-height:1.42;
+    color:var(--soft);
+    margin:54px 0 0 0;max-width:1020px;
+  }
+  .spacer{flex:1;}
+  .footrule{height:1px;background:var(--rule);border:0;margin:0 0 30px 0;}
+  .footrow{
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .presenter{
+    font-family:"Source Serif 4",serif;
+    font-size:26px;font-weight:500;color:var(--ink);
+  }
+  .footer{
+    font-family:"Inter",sans-serif;
+    font-size:19px;font-weight:400;
+    letter-spacing:0.04em;color:var(--soft);
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="kicker">A Hands-on Workshop<span class="dot">·</span>NYU</div>
+    <hr class="hair">
+    <h1>AI &amp; Knowledge Management for Researchers</h1>
+    <p class="subtitle">What generative AI actually is, which tools matter, and how to make them answer faithfully from your documents.</p>
+    <div class="spacer"></div>
+    <hr class="footrule">
+    <div class="footrow">
+      <div class="presenter">Zezhen (Michael) Wu&nbsp;&nbsp;—&nbsp;&nbsp;The Agency Fund</div>
+      <div class="footer">agenticworkflowsclub.org/ai-101&nbsp;&nbsp;·&nbsp;&nbsp;June 2026</div>
+    </div>
+  </div>
+</body>
+</html>

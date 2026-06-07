@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Agenda</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .agenda-list {
+    margin-top: 54px;
+    display: flex; flex-direction: column; gap: 26px;
+    flex: 1;
+  }
+  .ag-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 34px 48px;
+    display: flex; align-items: center; gap: 44px;
+  }
+  .ag-row .pnum {
+    font-size: 50px; font-weight: 900; color: var(--gold);
+    line-height: 1; flex-shrink: 0; width: 132px;
+    letter-spacing: 0.02em;
+  }
+  .ag-row .pnum small { font-size: 22px; font-weight: 700; display: block; color: var(--gold); letter-spacing: 0.14em; }
+  .ag-row .pbody { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .ag-row .ptitle { font-size: 34px; font-weight: 700; color: var(--navy); line-height: 1.18; }
+  .ag-row .pdesc { font-size: 26px; font-weight: 400; color: var(--ink-secondary); line-height: 1.3; }
+  .ag-row .pdur {
+    font-size: 24px; font-weight: 600; color: var(--ink-muted);
+    flex-shrink: 0; letter-spacing: 0.02em; white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow">Today &middot; 2 Hours</p>
+    <h1>Where we&rsquo;re <span class="accent">going</span></h1>
+
+    <div class="agenda-list">
+      <div class="ag-row">
+        <span class="pnum"><small>Part</small>1</span>
+        <div class="pbody">
+          <span class="ptitle">AI 101</span>
+          <span class="pdesc">What this technology actually is</span>
+        </div>
+        <span class="pdur">~30 min</span>
+      </div>
+      <div class="ag-row">
+        <span class="pnum"><small>Part</small>2</span>
+        <div class="pbody">
+          <span class="ptitle">The main kinds of tools</span>
+          <span class="pdesc">Tools that answer, tools that act, and tools that remember</span>
+        </div>
+        <span class="pdur">~25 min</span>
+      </div>
+      <div class="ag-row">
+        <span class="pnum"><small>Part</small>3</span>
+        <div class="pbody">
+          <span class="ptitle">Hands-on</span>
+          <span class="pdesc">Make AI answer from YOUR documents</span>
+        </div>
+        <span class="pdur">~50 min</span>
+      </div>
+      <div class="ag-row">
+        <span class="pnum"><small>Part</small>4</span>
+        <div class="pbody">
+          <span class="ptitle">Caveats and takeaways</span>
+          <span class="pdesc">What to carry out of the room</span>
+        </div>
+        <span class="pdur">~15 min</span>
+      </div>
+    </div>
+
+    <div class="footnote">
+      <span class="mark"></span>
+      <span>You will leave with one working AI notebook that answers from your own documents, built by you and checked by you.</span>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>From autocomplete to assistant</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .asst-flow {
+    margin-top: 64px;
+    display: flex; align-items: stretch;
+    flex: 1;
+  }
+  .asst-card {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 48px 44px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .asst-stage {
+    font-size: 20px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+  }
+  .asst-name { font-size: 40px; font-weight: 800; color: var(--navy); line-height: 1.08; }
+  .asst-desc { font-size: 27px; font-weight: 400; color: var(--ink-secondary); line-height: 1.42; }
+  .asst-num {
+    font-size: 30px; font-weight: 900; color: var(--gold);
+    line-height: 1; margin-bottom: 4px;
+  }
+  .asst-arrow {
+    flex-shrink: 0; align-self: center;
+    width: 96px; display: flex; align-items: center; justify-content: center;
+  }
+  .asst-arrow svg { display: block; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow">Part 1 &middot; AI 101</p>
+    <h1>People shaped raw prediction into an <span class="accent">assistant</span></h1>
+
+    <div class="asst-flow">
+      <div class="asst-card">
+        <span class="asst-num">1</span>
+        <span class="asst-stage">Pretraining</span>
+        <span class="asst-name">Read most of the internet</span>
+        <span class="asst-desc">It learns the patterns of language from a vast sweep of text.</span>
+      </div>
+
+      <div class="asst-arrow">
+        <svg width="72" height="40" viewBox="0 0 72 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 20 H56" stroke="#F1B505" stroke-width="6" stroke-linecap="round"/>
+          <path d="M52 6 L70 20 L52 34" fill="none" stroke="#F1B505" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="asst-card">
+        <span class="asst-num">2</span>
+        <span class="asst-stage">Instruction tuning</span>
+        <span class="asst-name">Learn to follow requests</span>
+        <span class="asst-desc">It is shaped to take an instruction and actually answer it.</span>
+      </div>
+
+      <div class="asst-arrow">
+        <svg width="72" height="40" viewBox="0 0 72 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 20 H56" stroke="#F1B505" stroke-width="6" stroke-linecap="round"/>
+          <path d="M52 6 L70 20 L52 34" fill="none" stroke="#F1B505" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="asst-card">
+        <span class="asst-num">3</span>
+        <span class="asst-stage">Human feedback</span>
+        <span class="asst-name">Learn what people prefer</span>
+        <span class="asst-desc">People rate its answers, and it is tuned toward the ones they like.</span>
+      </div>
+    </div>
+
+    <div class="footnote">
+      <span class="mark"></span>
+      <span>Helpfulness and tone are <strong>trained into the model</strong> by its makers. The assistant is a designed artifact, and its designers' choices are built into how it responds.</span>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

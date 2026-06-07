@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Part 1 divider</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  body.dark .slide { justify-content: center; position: relative; }
+  .topbar {
+    position: absolute;
+    top: 110px; left: 120px;
+    display: flex; align-items: center; gap: 22px;
+  }
+  .topbar .tick { width: 64px; height: 5px; background: var(--gold); border-radius: 3px; }
+  .topbar .wordmark {
+    font-size: 21px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .part-eyebrow {
+    font-size: 26px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin: 0 0 44px;
+  }
+  .assertion {
+    margin: 0;
+    font-size: 96px; font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--white);
+    max-width: 1500px;
+  }
+  .assertion .accent { color: var(--gold); }
+</style>
+</head>
+<body class="dark">
+  <div class="slide">
+    <div class="topbar">
+      <span class="tick"></span>
+      <span class="wordmark">Agentic Workflows Club</span>
+    </div>
+
+    <p class="part-eyebrow">Part 1 &middot; AI 101</p>
+    <p class="assertion">Generative AI is a new kind of tool, and like every tool, it has a <span class="accent">shape</span>.</p>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

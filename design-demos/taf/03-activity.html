@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Activity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #003366;
+    --navy-deep: #0B2341;
+    --gold: #F1B505;
+    --white: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-subtle: #F8F9FA;
+    --ink: #212529;
+    --ink-secondary: #495057;
+    --ink-muted: #868E96;
+    --border: #DEE2E6;
+    --font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; margin: 0; overflow: hidden;
+    font-family: var(--font);
+    background: var(--surface-subtle);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .slide {
+    width: 1920px; height: 1080px;
+    padding: 92px 120px 84px;
+    display: flex; flex-direction: column;
+  }
+  .header { margin-bottom: 50px; }
+  .eyebrow {
+    font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 22px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 84px; font-weight: 800; line-height: 1; letter-spacing: -0.02em;
+    color: var(--navy);
+    display: inline-block;
+  }
+  .goal {
+    margin: 24px 0 0;
+    font-size: 30px; font-weight: 500; color: var(--ink-secondary);
+  }
+  .columns { display: flex; gap: 72px; flex: 1; align-items: stretch; }
+  .steps-col { flex: 1.35; }
+  .side-col { flex: 1; display: flex; flex-direction: column; gap: 32px; }
+
+  .steps { list-style: none; padding: 0; margin: 0; }
+  .steps li {
+    display: flex; align-items: flex-start; gap: 32px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .steps li:first-child { padding-top: 0; }
+  .steps li:last-child { border-bottom: 0; }
+  .num {
+    font-size: 56px; font-weight: 900; color: var(--gold);
+    line-height: 1; width: 64px; flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+  .step-text {
+    font-size: 31px; font-weight: 500; line-height: 1.32; color: var(--ink);
+    padding-top: 2px;
+  }
+
+  .debrief {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px hsl(210 50% 20% / 0.08);
+    padding: 40px 44px;
+  }
+  .debrief .label {
+    font-size: 20px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 18px;
+  }
+  .debrief .q {
+    font-size: 32px; font-weight: 600; line-height: 1.38; color: var(--navy);
+    margin: 0;
+  }
+
+  .caveat {
+    background: var(--navy-deep);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px hsl(210 50% 20% / 0.12);
+    padding: 40px 44px;
+    margin-top: auto;
+  }
+  .caveat .label {
+    font-size: 20px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    margin: 0 0 16px;
+  }
+  .caveat .text {
+    font-size: 29px; font-weight: 500; line-height: 1.4; color: var(--white);
+    margin: 0;
+  }
+  .caveat .text .accent { color: var(--gold); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header">
+      <p class="eyebrow">Activity 3 &middot; 15 Min</p>
+      <h1>Hallucination hunt</h1>
+      <p class="goal">Feel the difference grounding makes.</p>
+    </div>
+
+    <div class="columns">
+      <div class="steps-col">
+        <ol class="steps">
+          <li><span class="num">1</span><span class="step-text">Pick a question you already know the answer to, from your own documents</span></li>
+          <li><span class="num">2</span><span class="step-text">Ask a bare chatbot &mdash; no files attached</span></li>
+          <li><span class="num">3</span><span class="step-text">Ask the same question in your notebook with documents loaded</span></li>
+          <li><span class="num">4</span><span class="step-text">Fact-check both answers against the source</span></li>
+        </ol>
+      </div>
+
+      <div class="side-col">
+        <div class="debrief">
+          <p class="label">Debrief</p>
+          <p class="q">Which answer sounded more confident &mdash; and which one was right?</p>
+        </div>
+
+        <div class="caveat">
+          <p class="label">Keep in mind</p>
+          <p class="text">Grounded <span class="accent">&ne; guaranteed</span>. Citations are leads to verify, not proof.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

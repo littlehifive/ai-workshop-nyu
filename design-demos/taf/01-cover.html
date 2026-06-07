@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #003366;
+    --navy-deep: #0B2341;
+    --navy-deepest: #061A2E;
+    --gold: #F1B505;
+    --gold-soft: #F9C826;
+    --white: #FFFFFF;
+    --muted-on-navy: #9AB3CC;
+    --font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; margin: 0; overflow: hidden;
+    font-family: var(--font);
+    background: var(--navy-deep);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+  .slide {
+    width: 1920px; height: 1080px;
+    position: relative;
+    padding: 130px 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* thin gold rule top-left as a quiet brand mark */
+  .topbar {
+    position: absolute;
+    top: 110px; left: 150px;
+    display: flex; align-items: center; gap: 22px;
+  }
+  .topbar .tick { width: 64px; height: 5px; background: var(--gold); border-radius: 3px; }
+  .topbar .wordmark {
+    font-size: 21px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .eyebrow {
+    font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted-on-navy);
+    margin: 0 0 38px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 116px; font-weight: 800; line-height: 1.04;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    max-width: 1500px;
+  }
+  h1 .accent { color: var(--gold); }
+  .subtitle {
+    margin: 48px 0 0;
+    font-size: 33px; font-weight: 400; line-height: 1.5;
+    color: #D5E0EC;
+    max-width: 1180px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 100px; left: 150px; right: 150px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 34px;
+    border-top: 1px solid rgba(154,179,204,0.28);
+  }
+  .presenter { font-size: 27px; font-weight: 600; color: var(--white); }
+  .presenter .dim { color: var(--muted-on-navy); font-weight: 500; }
+  .url { font-size: 24px; font-weight: 500; color: var(--muted-on-navy); letter-spacing: 0.02em; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="topbar">
+      <span class="tick"></span>
+      <span class="wordmark">Agentic Workflows Club</span>
+    </div>
+
+    <p class="eyebrow">A Hands-On Workshop &middot; NYU</p>
+    <h1>AI &amp; <span class="accent">Knowledge Management</span> for Researchers</h1>
+    <p class="subtitle">What generative AI actually is, which tools matter, and how to make them answer faithfully from your documents.</p>
+
+    <div class="footer">
+      <span class="presenter">Zezhen (Michael) Wu <span class="dim">&mdash; The Agency Fund</span></span>
+      <span class="url">agenticworkflowsclub.org/ai-101 &middot; June 2026</span>
+    </div>
+  </div>
+</body>
+</html>

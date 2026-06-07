@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share-out</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  .a-header { margin-bottom: 56px; }
+  .prompt-cards { display: flex; gap: 48px; align-items: stretch; }
+  .pcard {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 48px 48px 52px;
+    display: flex; flex-direction: column; gap: 26px;
+  }
+  .pcard .num {
+    font-size: 56px; font-weight: 900; color: var(--gold); line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .pcard .ptext {
+    font-size: 34px; font-weight: 600; line-height: 1.32; color: var(--navy);
+    margin: 0;
+  }
+  .revisit {
+    background: var(--navy-deep);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px hsl(210 50% 20% / 0.12);
+    padding: 44px 52px;
+    margin-top: 56px;
+  }
+  .revisit .label {
+    font-size: 20px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    margin: 0 0 16px;
+  }
+  .revisit .text {
+    font-size: 32px; font-weight: 500; line-height: 1.38; color: var(--white);
+    margin: 0;
+  }
+  .revisit .text .accent { color: var(--gold); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="a-header">
+      <p class="eyebrow">Share-Out</p>
+      <h1>What <span class="accent">surprised</span> you?</h1>
+    </div>
+
+    <div class="prompt-cards">
+      <div class="pcard">
+        <span class="num">1</span>
+        <p class="ptext">One thing that went better than you expected</p>
+      </div>
+      <div class="pcard">
+        <span class="num">2</span>
+        <p class="ptext">One thing that fell short of what you hoped for</p>
+      </div>
+      <div class="pcard">
+        <span class="num">3</span>
+        <p class="ptext">If you could design the ideal AI tool for your own work, what would it do?</p>
+      </div>
+    </div>
+
+    <div class="revisit">
+      <p class="label">Back to the whiteboard</p>
+      <p class="text">Return to the doubts we collected at the start of the session. Did anyone's view <span class="accent">shift</span>, in either direction?</p>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

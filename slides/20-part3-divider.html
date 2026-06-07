@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Part 3 divider</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  body.dark .slide { justify-content: center; position: relative; }
+  .topbar {
+    position: absolute;
+    top: 110px; left: 120px;
+    display: flex; align-items: center; gap: 22px;
+  }
+  .topbar .tick { width: 64px; height: 5px; background: var(--gold); border-radius: 3px; }
+  .topbar .wordmark {
+    font-size: 21px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--white);
+  }
+  .part-eyebrow {
+    font-size: 26px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin: 0 0 44px;
+  }
+  .assertion {
+    margin: 0;
+    font-size: 96px; font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--white);
+    max-width: 1500px;
+  }
+  .assertion .accent { color: var(--gold); }
+  .ground-rules {
+    display: flex; align-items: stretch; gap: 0;
+    margin-top: 72px;
+  }
+  .ground-rules .rule {
+    font-size: 25px; font-weight: 500; line-height: 1.35;
+    color: var(--muted-on-navy, #9AB3CC);
+    padding: 0 40px;
+    border-left: 1px solid rgba(154,179,204,0.32);
+    max-width: 340px;
+  }
+  .ground-rules .rule:first-child { padding-left: 0; border-left: 0; }
+  .ground-rules .rule .lead { color: var(--white); font-weight: 600; }
+</style>
+</head>
+<body class="dark">
+  <div class="slide">
+    <div class="topbar">
+      <span class="tick"></span>
+      <span class="wordmark">Agentic Workflows Club</span>
+    </div>
+
+    <p class="part-eyebrow">Part 3 &middot; Hands-On</p>
+    <p class="assertion">You believe what you <span class="accent">verify</span>, so let us verify it together.</p>
+
+    <div class="ground-rules">
+      <p class="rule"><span class="lead">Non-sensitive documents only.</span> Nothing you couldn't email a colleague.</p>
+      <p class="rule"><span class="lead">Work in pairs.</span> Two people notice more than one.</p>
+      <p class="rule"><span class="lead">Write down every failure.</span> Each failure is useful data.</p>
+    </div>
+  </div>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>
