@@ -147,7 +147,7 @@
         <ol class="steps">
           <li data-reveal><span class="num">1</span><span class="step-text">Open an AI tool <span class="em">you already know</span> (ChatGPT, Claude, Gemini, or Copilot)</span></li>
           <li data-reveal><span class="num">2</span><span class="step-text">Write a quick, minimal version of a real request from your work, and run it</span></li>
-          <li data-reveal><span class="num">3</span><span class="step-text">Rewrite the request with four elements: who you are, the context that matters, the format you want, and one example</span></li>
+          <li data-reveal><span class="num">3</span><span class="step-text">Rewrite it with four elements: a <span class="em">role</span> for the AI to assume, the <span class="em">context</span> that matters, the <span class="em">structure</span> you want, and <span class="em">constraints</span> on quality</span></li>
           <li data-reveal><span class="num">4</span><span class="step-text">Run it again and compare the two outputs side by side</span></li>
         </ol>
       </div>
@@ -200,10 +200,10 @@
     structured: {
       head: 'Prompt',
       body: [
-        '<p class="pc-line"><span class="tagk">Who:</span> a program officer at a funder.</p>',
+        '<p class="pc-line"><span class="tagk">Role:</span> act as a program officer at a funder.</p>',
         '<p class="pc-line"><span class="tagk">Context:</span> rural clinic pilot, 6 months, 1,200 patients.</p>',
-        '<p class="pc-line"><span class="tagk">Format:</span> 120-word newsletter blurb, plain language.</p>',
-        '<p class="pc-line"><span class="tagk">Example:</span> "In March, the team reached..."</p>'
+        '<p class="pc-line"><span class="tagk">Structure:</span> a 120-word newsletter blurb with a one-line takeaway.</p>',
+        '<p class="pc-line"><span class="tagk">Constraints:</span> plain language, no jargon, every figure backed by the data.</p>'
       ],
       spec: 88, use: 91
     }
