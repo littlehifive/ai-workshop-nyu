@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Share-out</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   .a-header { margin-bottom: 56px; }
@@ -47,30 +48,31 @@
 <body>
   <div class="slide">
     <div class="a-header">
-      <p class="eyebrow">Share-Out</p>
-      <h1>What <span class="accent">surprised</span> you?</h1>
+      <p class="eyebrow" data-reveal>Share-Out</p>
+      <h1 data-reveal>What <span class="accent">surprised</span> you?</h1>
     </div>
 
     <div class="prompt-cards">
-      <div class="pcard">
+      <div class="pcard hoverable" data-reveal style="--reveal-delay:.25s">
         <span class="num">1</span>
         <p class="ptext">One thing that went better than you expected</p>
       </div>
-      <div class="pcard">
+      <div class="pcard hoverable" data-reveal style="--reveal-delay:.45s">
         <span class="num">2</span>
         <p class="ptext">One thing that fell short of what you hoped for</p>
       </div>
-      <div class="pcard">
+      <div class="pcard hoverable" data-reveal style="--reveal-delay:.65s">
         <span class="num">3</span>
         <p class="ptext">If you could design the ideal AI tool for your own work, what would it do?</p>
       </div>
     </div>
 
-    <div class="revisit">
+    <div class="revisit" data-reveal style="--reveal-delay:.95s">
       <p class="label">Back to the whiteboard</p>
       <p class="text">Return to the doubts we collected at the start of the session. Did anyone's view <span class="accent">shift</span>, in either direction?</p>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

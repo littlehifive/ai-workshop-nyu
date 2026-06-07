@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Automate</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   h1 { font-size: 56px; max-width: 1620px; }
@@ -46,31 +47,32 @@
 </head>
 <body>
   <div class="slide">
-    <p class="eyebrow">Part 2 &middot; The Tool Landscape</p>
-    <h1>A fourth capability is emerging: AI that <span class="accent">automates</span> work on your behalf</h1>
+    <p class="eyebrow" data-reveal>Part 2 &middot; The Tool Landscape</p>
+    <h1 data-reveal>A fourth capability is emerging: AI that <span class="accent">automates</span> work on your behalf</h1>
 
-    <p class="au-lead">Beyond asking, doing, and remembering, the newest systems learn enough about your work to carry out <strong>recurring tasks on their own</strong>, on a schedule or in response to events, under supervision rules that you define. You set the standing instructions once; the system runs and reports back.</p>
+    <p class="au-lead" data-reveal>Beyond asking, doing, and remembering, the newest systems learn enough about your work to carry out <strong>recurring tasks on their own</strong>, on a schedule or in response to events, under supervision rules that you define. You set the standing instructions once; the system runs and reports back.</p>
 
     <div class="au-examples">
-      <div class="au-card">
+      <div class="au-card hoverable" data-reveal>
         <p class="k">For a researcher</p>
         <p class="v">A weekly scan of new papers in your subfield, summarized and delivered every Monday morning.</p>
       </div>
-      <div class="au-card">
+      <div class="au-card hoverable" data-reveal>
         <p class="k">For a team</p>
         <p class="v">Meeting recordings transcribed, summarized, and filed to the right project folder without anyone asking.</p>
       </div>
-      <div class="au-card">
+      <div class="au-card hoverable" data-reveal>
         <p class="k">For a study</p>
         <p class="v">A data-quality check that runs after each survey wave and flags exceptions for human review.</p>
       </div>
     </div>
 
-    <div class="au-caveat">
+    <div class="au-caveat" data-reveal>
       <span class="label">Outside today's scope</span>
       <span class="text">We will not cover automation today. The principle you will practice applies here with greater force: the more a system acts <span class="gold">for</span> you, the more deliberately you must verify its work.</span>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

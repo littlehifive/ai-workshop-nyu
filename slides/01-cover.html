@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Cover</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <style>
   :root {
     --navy: #003366;
@@ -19,7 +20,8 @@
   body {
     width: 1920px; height: 1080px; margin: 0; overflow: hidden;
     font-family: var(--font);
-    background: var(--navy-deep);
+    background:
+      radial-gradient(115% 95% at 28% 32%, var(--navy-deep) 0%, var(--navy-deepest) 78%);
     color: var(--white);
     -webkit-font-smoothing: antialiased;
   }
@@ -55,8 +57,12 @@
     max-width: 1500px;
   }
   h1 .accent { color: var(--gold); }
+  .goldrule {
+    height: 5px; width: 220px; background: var(--gold); border-radius: 3px;
+    margin: 44px 0 0;
+  }
   .subtitle {
-    margin: 48px 0 0;
+    margin: 40px 0 0;
     font-size: 33px; font-weight: 400; line-height: 1.5;
     color: #D5E0EC;
     max-width: 1180px;
@@ -75,20 +81,22 @@
 </head>
 <body>
   <div class="slide">
-    <div class="topbar">
+    <div class="topbar" data-reveal>
       <span class="tick"></span>
       <span class="wordmark">Agentic Workflows Club</span>
     </div>
 
-    <p class="eyebrow">A Hands-On Workshop &middot; NYU</p>
-    <h1>AI &amp; <span class="accent">Knowledge Management</span> for Researchers</h1>
-    <p class="subtitle">What generative AI actually is, which tools matter, and how to make them answer faithfully from your documents.</p>
+    <p class="eyebrow" data-reveal>A Hands-On Workshop &middot; NYU</p>
+    <h1 data-reveal>AI &amp; <span class="accent">Knowledge Management</span> for Researchers</h1>
+    <div class="goldrule" data-grow-w style="width:220px"></div>
+    <p class="subtitle" data-reveal>What generative AI actually is, which tools matter, and how to make them answer faithfully from your documents.</p>
 
-    <div class="footer">
+    <div class="footer" data-reveal>
       <span class="presenter">Zezhen (Michael) Wu <span class="dim">&middot; The Agency Fund</span></span>
       <span class="url">agenticworkflowsclub.org/ai-101 &middot; June 2026</span>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

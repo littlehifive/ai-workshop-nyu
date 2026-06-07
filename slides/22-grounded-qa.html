@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Activity 2 · Build your grounded Q&amp;A</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   .a-header { margin-bottom: 46px; }
@@ -79,36 +80,37 @@
 <body>
   <div class="slide">
     <div class="a-header">
-      <div class="tagrow">
+      <div class="tagrow" data-reveal>
         <span class="tag-chip">Main Activity</span>
         <span class="a-eyebrow">Activity 2 &middot; 20 Min</span>
       </div>
-      <h1 class="a-title">Build your grounded Q&amp;A</h1>
-      <p class="a-goal">Build a working AI interface that answers only from your own documents.</p>
+      <h1 class="a-title" data-reveal>Build your grounded Q&amp;A</h1>
+      <p class="a-goal" data-reveal>Build a working AI interface that answers only from your own documents.</p>
     </div>
 
     <div class="columns">
       <div class="steps-col">
         <ol class="steps">
-          <li><span class="num">1</span><span class="step-text">Gather <span class="em">as many documents as are useful</span>: papers, notes, reports, anything you know well</span></li>
-          <li><span class="num">2</span><span class="step-text">Create a NotebookLM notebook (or a Project in your familiar tool) and upload them</span></li>
-          <li><span class="num">3</span><span class="step-text">Ask <span class="em">five real questions</span> you'd ask a colleague who had read them</span></li>
-          <li><span class="num">4</span><span class="step-text">Click every citation and confirm that the quoted passage genuinely supports the answer</span></li>
+          <li data-reveal><span class="num">1</span><span class="step-text">Gather <span class="em">as many documents as are useful</span>: papers, notes, reports, anything you know well</span></li>
+          <li data-reveal><span class="num">2</span><span class="step-text">Create a NotebookLM notebook (or a Project in your familiar tool) and upload them</span></li>
+          <li data-reveal><span class="num">3</span><span class="step-text">Ask <span class="em">five real questions</span> you'd ask a colleague who had read them</span></li>
+          <li data-reveal><span class="num">4</span><span class="step-text">Click every citation and confirm that the quoted passage genuinely supports the answer</span></li>
         </ol>
       </div>
 
       <div class="side-col">
-        <div class="checklist">
+        <div class="checklist" data-reveal="right">
           <p class="label">Validation checklist</p>
           <ul>
-            <li><span class="qmark">&rarr;</span><span>Is the citation real?</span></li>
-            <li><span class="qmark">&rarr;</span><span>Does the passage say what the answer claims?</span></li>
-            <li><span class="qmark">&rarr;</span><span>What did it miss?</span></li>
+            <li data-reveal style="--reveal-delay:.95s"><span class="qmark">&rarr;</span><span>Is the citation real?</span></li>
+            <li data-reveal style="--reveal-delay:1.05s"><span class="qmark">&rarr;</span><span>Does the passage say what the answer claims?</span></li>
+            <li data-reveal style="--reveal-delay:1.15s"><span class="qmark">&rarr;</span><span>What did it miss?</span></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

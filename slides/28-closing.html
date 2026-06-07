@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Closing</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   :root { --muted-on-navy: #9AB3CC; }
@@ -58,25 +59,24 @@
 </head>
 <body class="dark">
   <div class="slide">
-    <div class="topbar">
+    <div class="topbar" data-reveal>
       <span class="tick"></span>
       <span class="wordmark">Agentic Workflows Club</span>
     </div>
 
-    <h1 class="close-title">A last idea to take home: <span class="accent">System 3</span></h1>
+    <h1 class="close-title" data-reveal="scale">Keep the work. <span class="accent">Keep the judgment.</span></h1>
 
-    <p class="passage">Wharton researchers Steven Shaw and Gideon Nave argue that AI now forms a third system of thinking alongside Kahneman's fast intuition and slow deliberation. <span class="k">Offloading</span> a task to AI, the way you hand arithmetic to a calculator, keeps your reasoning in control. <span class="k">Cognitive surrender</span> is different: the AI makes the decision and you adopt it as your own without noticing the transfer. In their experiments, people's confidence rose whether the AI was right or wrong.</p>
-
-    <div class="resources">
+    <div class="resources" data-reveal style="--reveal-delay:.55s">
       <p class="res"><span class="dot"></span><span><span class="k">agenticworkflowsclub.org/ai-101</span>, today's Part 1 in full</span></p>
       <p class="res"><span class="dot"></span><span><span class="k">"Thinking, Fast, Slow, and Artificially"</span>, Wharton Executive Education, May 2026</span></p>
       <p class="res"><span class="dot"></span><span><span class="k">Zezhen (Michael) Wu</span>, The Agency Fund</span></p>
     </div>
 
-    <div class="hero-wrap">
+    <div class="hero-wrap" data-reveal style="--reveal-delay:1.15s">
       <p class="hero">Offload the work whenever it helps. Never surrender the judgment: decide, deliberately, <span class="accent">which decisions remain yours</span>.</p>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

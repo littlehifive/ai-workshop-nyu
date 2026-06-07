@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>How it works</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   h1 { font-size: 56px; max-width: 1600px; }
@@ -64,58 +65,59 @@
 </head>
 <body>
   <div class="slide">
-    <p class="eyebrow">Part 1 &middot; AI 101</p>
-    <h1>Under the hood, the model predicts the <span class="accent">next word</span>, and it does this astonishingly well</h1>
+    <p class="eyebrow" data-reveal>Part 1 &middot; AI 101</p>
+    <h1 data-reveal>Under the hood, the model predicts the <span class="accent">next word</span>, and it does this astonishingly well</h1>
 
     <div class="ww-body">
-      <div class="predict">
+      <div class="predict" data-reveal style="--reveal-delay:.15s">
         <p class="prompt">&ldquo;The capital of France is <span class="blank">____</span>&rdquo;</p>
         <p class="illus">Next-token probabilities &middot; illustrative</p>
         <div class="bars">
           <div class="bar-row lead">
             <span class="token">Paris</span>
-            <span class="bar-track"><span class="bar-fill" style="width:97%"></span></span>
-            <span class="pct">97%</span>
+            <span class="bar-track"><span class="bar-fill" data-grow-w style="width:97%; --reveal-delay:.55s"></span></span>
+            <span class="pct" data-reveal style="--reveal-delay:1.25s">97%</span>
           </div>
           <div class="bar-row minor">
             <span class="token">Lyon</span>
-            <span class="bar-track"><span class="bar-fill" style="width:8%"></span></span>
-            <span class="pct">1%</span>
+            <span class="bar-track"><span class="bar-fill" data-grow-w style="width:8%; --reveal-delay:.85s"></span></span>
+            <span class="pct" data-reveal style="--reveal-delay:1.55s">1%</span>
           </div>
           <div class="bar-row minor">
             <span class="token">Nice</span>
-            <span class="bar-track"><span class="bar-fill" style="width:5%"></span></span>
-            <span class="pct">0.5%</span>
+            <span class="bar-track"><span class="bar-fill" data-grow-w style="width:5%; --reveal-delay:1.05s"></span></span>
+            <span class="pct" data-reveal style="--reveal-delay:1.75s">0.5%</span>
           </div>
           <div class="bar-row minor">
             <span class="token">other</span>
-            <span class="bar-track"><span class="bar-fill" style="width:11%"></span></span>
-            <span class="pct">1.5%</span>
+            <span class="bar-track"><span class="bar-fill" data-grow-w style="width:11%; --reveal-delay:1.25s"></span></span>
+            <span class="pct" data-reveal style="--reveal-delay:1.95s">1.5%</span>
           </div>
         </div>
       </div>
 
       <div class="terms">
-        <div class="term">
+        <div class="term" data-reveal style="--reveal-delay:2.15s">
           <p class="t">Token</p>
           <p class="d">The unit of text the model reads and writes, roughly a fragment of a word.</p>
         </div>
-        <div class="term">
+        <div class="term" data-reveal style="--reveal-delay:2.3s">
           <p class="t">Model</p>
           <p class="d">The trained statistical system that produces these probabilities.</p>
         </div>
-        <div class="term">
+        <div class="term" data-reveal style="--reveal-delay:2.45s">
           <p class="t">Context window</p>
           <p class="d">How much text it can &ldquo;see&rdquo; at once when it predicts.</p>
         </div>
       </div>
     </div>
 
-    <div class="footnote">
+    <div class="footnote" data-reveal style="--reveal-delay:2.65s">
       <span class="mark"></span>
       <span>There is no database lookup behind the answer and no guarantee of understanding. The model produces a well-calibrated guess from patterns in its training data.</span>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

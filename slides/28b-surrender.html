@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The scissors effect</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  :root { --brick: #B3361F; }
+  .slide { padding: 86px 120px 64px; }
+  .header { margin-bottom: 40px; }
+  .eyebrow {
+    font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 18px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 60px; font-weight: 800; line-height: 1.06; letter-spacing: -0.02em;
+    color: var(--navy); max-width: 1560px;
+  }
+
+  .body { display: flex; gap: 64px; flex: 1; align-items: stretch; }
+
+  /* Chart */
+  .chart-wrap {
+    flex: 1.5;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 36px 44px 30px;
+    display: flex; flex-direction: column;
+  }
+  .chart {
+    flex: 1;
+    display: flex; align-items: flex-end; gap: 64px;
+    padding: 0 24px;
+    border-bottom: 2px solid var(--border);
+  }
+  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .bar-num {
+    font-size: 52px; font-weight: 800; color: var(--ink);
+    font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+    margin: 0 0 12px;
+  }
+  .chip {
+    font-size: 20px; font-weight: 800; letter-spacing: 0.02em;
+    padding: 5px 13px; border-radius: 20px; margin: 0 0 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .chip.up { background: #DEEAF2; color: var(--navy); }
+  .chip.down { background: #FBEAE6; color: var(--brick); }
+  .bar {
+    width: 132px; border-radius: 8px 8px 0 0;
+    background: var(--gold);
+  }
+  .bar.navy { background: var(--navy); }
+  .bar.brick { background: var(--brick); }
+  .bar-label {
+    font-size: 23px; font-weight: 700; color: var(--ink-secondary);
+    text-align: center; margin: 18px 0 0; line-height: 1.25;
+  }
+  .bar-sub {
+    font-size: 18px; font-weight: 600; color: var(--brick);
+    text-align: center; margin: 6px 0 0;
+  }
+  .xaxis { display: flex; gap: 64px; padding: 0 24px; }
+  .xaxis .x-cell { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  /* Side column */
+  .side { flex: 1; display: flex; flex-direction: column; gap: 26px; justify-content: center; }
+  .callout {
+    background: var(--navy-deep);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px hsl(210 50% 20% / 0.12);
+    padding: 34px 38px;
+  }
+  .callout .label {
+    font-size: 19px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    margin: 0 0 18px;
+  }
+  .callout .text {
+    font-size: 28px; font-weight: 500; line-height: 1.42; color: var(--white);
+    margin: 0;
+  }
+  .callout .text .big {
+    font-weight: 800; color: var(--gold); font-variant-numeric: tabular-nums;
+  }
+  .source {
+    font-size: 19px; font-weight: 500; color: var(--ink-muted);
+    margin: 0;
+  }
+
+  .footnote {
+    margin-top: 30px;
+    display: flex; align-items: stretch; gap: 20px;
+    font-size: 25px; font-weight: 500; line-height: 1.42;
+    color: var(--ink-secondary); max-width: 1620px;
+  }
+  .footnote .mark { width: 6px; background: var(--gold); border-radius: 3px; flex-shrink: 0; }
+  .footnote .k { color: var(--ink); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header">
+      <p class="eyebrow" data-reveal>Part 4 &middot; Takeaways</p>
+      <h1 data-reveal>Confidence rises whether or not the AI is right</h1>
+    </div>
+
+    <div class="body">
+      <div class="chart-wrap" data-reveal>
+        <div class="chart">
+          <div class="bar-col">
+            <span class="bar-num">45.8%</span>
+            <span class="bar gold" data-grow-h style="height:55%; --reveal-delay:.7s"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-num">71.0%</span>
+            <span class="chip up">+25.2 pp</span>
+            <span class="bar navy" data-grow-h style="height:85%; --reveal-delay:.95s"></span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-num">31.5%</span>
+            <span class="chip down">&minus;14.3 pp</span>
+            <span class="bar brick" data-grow-h style="height:38%; --reveal-delay:1.25s"></span>
+          </div>
+        </div>
+        <div class="xaxis">
+          <div class="x-cell"><p class="bar-label">On their own</p></div>
+          <div class="x-cell"><p class="bar-label">With accurate AI</p></div>
+          <div class="x-cell"><p class="bar-label">With faulty AI</p><p class="bar-sub">worse than no AI at all</p></div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="callout" data-reveal="right" style="--reveal-delay:1.0s">
+          <p class="label">Reported confidence</p>
+          <p class="text"><span class="big">77%</span> with AI vs <span class="big">65.3%</span> alone. It did not fall even as the AI kept being wrong.</p>
+        </div>
+        <p class="source" data-reveal="right" style="--reveal-delay:1.1s">Shaw &amp; Nave, 2026 &middot; 1,372 participants across three studies.</p>
+      </div>
+    </div>
+
+    <div class="footnote" data-reveal style="--reveal-delay:1.5s">
+      <span class="mark"></span>
+      <span>This is why every activity today ended with verification. <span class="k">Checking is the habit that keeps System 2 in the loop.</span></span>
+    </div>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>

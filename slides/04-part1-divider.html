@@ -4,8 +4,13 @@
 <meta charset="utf-8">
 <title>Part 1 divider</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
+  body.dark {
+    background:
+      radial-gradient(120% 100% at 30% 35%, var(--navy-deep) 0%, var(--navy-deepest) 80%);
+  }
   body.dark .slide { justify-content: center; position: relative; }
   .topbar {
     position: absolute;
@@ -33,14 +38,15 @@
 </head>
 <body class="dark">
   <div class="slide">
-    <div class="topbar">
+    <div class="topbar" data-reveal>
       <span class="tick"></span>
       <span class="wordmark">Agentic Workflows Club</span>
     </div>
 
-    <p class="part-eyebrow">Part 1 &middot; AI 101</p>
-    <p class="assertion">Generative AI is a new kind of tool, and like every tool, it has a <span class="accent">shape</span>.</p>
+    <p class="part-eyebrow" data-reveal>Part 1 &middot; AI 101</p>
+    <p class="assertion" data-reveal="scale" style="--reveal-delay:.35s">Generative AI is a new kind of tool, and like every tool, it has a <span class="accent">shape</span>.</p>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

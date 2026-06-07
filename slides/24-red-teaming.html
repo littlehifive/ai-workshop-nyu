@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Activity</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <style>
   :root {
     --navy: #003366;
@@ -28,10 +29,10 @@
   }
   .slide {
     width: 1920px; height: 1080px;
-    padding: 92px 120px 84px;
+    padding: 76px 120px 60px;
     display: flex; flex-direction: column;
   }
-  .header { margin-bottom: 50px; }
+  .header { margin-bottom: 30px; }
   .eyebrow {
     font-size: 22px; font-weight: 700; letter-spacing: 0.14em;
     text-transform: uppercase; color: #ECAA00;
@@ -49,12 +50,12 @@
   }
   .columns { display: flex; gap: 72px; flex: 1; align-items: stretch; }
   .steps-col { flex: 1.35; }
-  .side-col { flex: 1; display: flex; flex-direction: column; gap: 32px; }
+  .side-col { flex: 1; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
 
   .steps { list-style: none; padding: 0; margin: 0; }
   .steps li {
     display: flex; align-items: flex-start; gap: 32px;
-    padding: 26px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--border);
   }
   .steps li:first-child { padding-top: 0; }
@@ -75,7 +76,7 @@
     border-left: 6px solid var(--gold);
     border-radius: 12px;
     box-shadow: 0 4px 8px hsl(210 50% 20% / 0.08);
-    padding: 40px 44px;
+    padding: 28px 38px;
   }
   .debrief .label {
     font-size: 20px; font-weight: 600; letter-spacing: 0.12em;
@@ -91,8 +92,7 @@
     background: var(--navy-deep);
     border-radius: 12px;
     box-shadow: 0 8px 24px hsl(210 50% 20% / 0.12);
-    padding: 40px 44px;
-    margin-top: auto;
+    padding: 28px 38px;
   }
   .caveat .label {
     font-size: 20px; font-weight: 600; letter-spacing: 0.12em;
@@ -105,39 +105,138 @@
   }
   .caveat .text .accent { color: var(--gold); font-weight: 700; }
   .step-text .em { color: var(--navy); font-weight: 700; }
+
+  /* Clickable probe steps */
+  .steps li.probe {
+    cursor: pointer; user-select: none;
+    margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+    border-radius: 10px;
+    transition: background 0.25s, box-shadow 0.25s;
+  }
+  .steps li.probe:hover { background: var(--surface); }
+  .steps li.probe.active {
+    background: var(--surface);
+    box-shadow: 0 4px 12px hsl(210 50% 20% / 0.10);
+  }
+  .steps li.probe.active .num { color: var(--navy); }
+  .click-hint {
+    font-size: 18px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 18px;
+  }
+  .click-hint .ico { color: var(--gold); }
+
+  /* "What to watch for" exchange panel */
+  .watch {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px hsl(210 50% 20% / 0.08);
+    padding: 26px 38px;
+  }
+  .watch .label {
+    font-size: 20px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 18px;
+  }
+  .exchange { display: flex; flex-direction: column; gap: 14px; }
+  .xline { display: flex; align-items: flex-start; gap: 16px; }
+  .xtag {
+    font-size: 15px; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 11px; border-radius: 6px; flex-shrink: 0;
+    margin-top: 4px; min-width: 86px; text-align: center;
+  }
+  .xtag.ask { background: var(--surface-subtle); color: var(--navy); border: 1px solid var(--border); }
+  .xtag.watch-for { background: #FBEAE6; color: #B3361F; border: 1px solid #E6BCB3; }
+  .xtext { font-size: 26px; font-weight: 500; line-height: 1.36; color: var(--ink); }
+  .xtext .strong { font-weight: 700; color: var(--navy); }
 </style>
 </head>
 <body>
   <div class="slide">
     <div class="header">
-      <p class="eyebrow">Activity 3 &middot; 15 Min</p>
-      <h1>Red-teaming your own bot</h1>
-      <p class="goal">Try, deliberately and systematically, to make the grounded assistant you just built give a wrong answer.</p>
+      <p class="eyebrow" data-reveal>Activity 3 &middot; 15 Min</p>
+      <h1 data-reveal>Red-teaming your own bot</h1>
+      <p class="goal" data-reveal>Try, deliberately and systematically, to make the grounded assistant you just built give a wrong answer.</p>
     </div>
 
     <div class="columns">
       <div class="steps-col">
+        <p class="click-hint" data-reveal><span class="ico">&rarr;</span> Click a probe</p>
         <ol class="steps">
-          <li><span class="num">1</span><span class="step-text">Ask a question your documents <span class="em">cannot</span> answer. Does the assistant admit the gap, or does it improvise?</span></li>
-          <li><span class="num">2</span><span class="step-text">Ask a question with a false premise built in, such as a finding your documents contradict. Does it push back?</span></li>
-          <li><span class="num">3</span><span class="step-text">Ask it to overstate: request a stronger conclusion than the evidence supports, and watch how far it goes</span></li>
-          <li><span class="num">4</span><span class="step-text">For every answer, open the citations and check whether the quoted passage actually says what the answer claims</span></li>
+          <li class="probe" data-probe="0" data-reveal><span class="num">1</span><span class="step-text">Ask a question your documents <span class="em">cannot</span> answer. Does the assistant admit the gap, or does it improvise?</span></li>
+          <li class="probe" data-probe="1" data-reveal><span class="num">2</span><span class="step-text">Ask a question with a false premise built in, such as a finding your documents contradict. Does it push back?</span></li>
+          <li class="probe" data-probe="2" data-reveal><span class="num">3</span><span class="step-text">Ask it to overstate: request a stronger conclusion than the evidence supports, and watch how far it goes</span></li>
+          <li class="probe" data-probe="3" data-reveal><span class="num">4</span><span class="step-text">For every answer, open the citations and check whether the quoted passage actually says what the answer claims</span></li>
         </ol>
       </div>
 
       <div class="side-col">
-        <div class="debrief">
+        <div class="watch" data-reveal="right">
+          <p class="label">What to watch for</p>
+          <div class="exchange">
+            <div class="xline"><span class="xtag ask">Ask</span><span class="xtext" id="watchAsk"></span></div>
+            <div class="xline"><span class="xtag watch-for">Watch</span><span class="xtext" id="watchFor"></span></div>
+          </div>
+        </div>
+
+        <div class="debrief" data-reveal="right">
           <p class="label">Debrief</p>
           <p class="q">Where did your assistant break first, and how convincing did it sound while breaking?</p>
         </div>
 
-        <div class="caveat">
+        <div class="caveat" data-reveal="right">
           <p class="label">Keep in mind</p>
           <p class="text">Grounding narrows the room for error; it does not <span class="accent">remove it</span>. A system you have red-teamed yourself is a system you can use with judgment.</p>
         </div>
       </div>
     </div>
   </div>
+<script>
+/* Clickable red-team probes. Click-only. First probe pre-selected. */
+(function () {
+  var PROBES = [
+    {
+      ask: 'A factual question your documents never address.',
+      watch: 'Does it <span class="strong">admit the gap</span>, or invent a confident answer?'
+    },
+    {
+      ask: 'A question that smuggles in a false premise your documents contradict.',
+      watch: 'Does it <span class="strong">push back on the premise</span>, or accept and build on it?'
+    },
+    {
+      ask: 'A request for a conclusion stronger than the evidence supports.',
+      watch: 'How far does it <span class="strong">overstate</span> before it qualifies the claim?'
+    },
+    {
+      ask: 'Any answer it just gave, with its citations opened.',
+      watch: 'Does the quoted passage <span class="strong">actually say</span> what the answer claims?'
+    }
+  ];
+  var askEl = document.getElementById('watchAsk');
+  var forEl = document.getElementById('watchFor');
+  var items = document.querySelectorAll('.steps li.probe');
+
+  function select(idx) {
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.toggle('active', i === idx);
+    }
+    askEl.innerHTML = PROBES[idx].ask;
+    forEl.innerHTML = PROBES[idx].watch;
+  }
+
+  for (var i = 0; i < items.length; i++) {
+    (function (n) {
+      items[n].addEventListener('click', function () { select(n); });
+    })(i);
+  }
+
+  // First probe pre-selected (also the PDF default state).
+  select(0);
+})();
+</script>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

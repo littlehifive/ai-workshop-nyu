@@ -7,7 +7,7 @@ const errors = [];
 page.on('pageerror', e => errors.push(`${page.url()}: ${e.message}`));
 page.on('console', m => { if (m.type() === 'error') errors.push(`${page.url()}: console.error ${m.text()}`); });
 for (const f of slides) {
-  await page.goto(`file://${process.cwd()}/slides/${f}`, { waitUntil: 'networkidle' });
+  await page.goto(`file://${process.cwd()}/slides/${f}?static=1`, { waitUntil: "networkidle" });
   await page.waitForTimeout(800);
   // overflow check: any element extending beyond 1920x1080
   const overflow = await page.evaluate(() => {

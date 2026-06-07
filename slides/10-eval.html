@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>How do you know it works?</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   .steps-row {
@@ -13,13 +14,18 @@
   }
   .lvl {
     flex: 1;
+    position: relative;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-top: 6px solid var(--gold);
     border-radius: 12px;
     box-shadow: var(--shadow-md);
-    padding: 36px 36px 40px;
+    padding: 42px 36px 40px;
     display: flex; flex-direction: column; gap: 16px;
+    overflow: hidden;
+  }
+  .lvl .topbar {
+    position: absolute; top: 0; left: 0; height: 6px;
+    background: var(--gold); border-radius: 12px 0 0 0;
   }
   .lvl-1 { height: 56%; }
   .lvl-2 { height: 72%; }
@@ -35,37 +41,42 @@
 </head>
 <body>
   <div class="slide">
-    <p class="eyebrow">Part 1 &middot; AI 101</p>
-    <h1>&ldquo;Seems fine&rdquo; is <span class="accent">not an evaluation</span></h1>
+    <p class="eyebrow" data-reveal>Part 1 &middot; AI 101</p>
+    <h1 data-reveal>&ldquo;Seems fine&rdquo; is <span class="accent">not an evaluation</span></h1>
 
     <div class="steps-row">
-      <div class="lvl lvl-1">
+      <div class="lvl lvl-1" data-reveal style="--reveal-delay:.25s">
+        <span class="topbar" data-grow-w style="width:100%; --reveal-delay:.5s"></span>
         <span class="tag">Level 1</span>
         <span class="name">Models Evaluation</span>
         <span class="desc">Does the AI system perform as intended?</span>
       </div>
-      <div class="lvl lvl-2">
+      <div class="lvl lvl-2" data-reveal style="--reveal-delay:.5s">
+        <span class="topbar" data-grow-w style="width:100%; --reveal-delay:.75s"></span>
         <span class="tag">Level 2</span>
         <span class="name">Product Evaluation</span>
         <span class="desc">Does the overall product engage and retain users?</span>
       </div>
-      <div class="lvl lvl-3">
+      <div class="lvl lvl-3" data-reveal style="--reveal-delay:.75s">
+        <span class="topbar" data-grow-w style="width:100%; --reveal-delay:1s"></span>
         <span class="tag">Level 3</span>
         <span class="name">User Evaluation</span>
         <span class="desc">Does the product change users' thoughts, feelings, knowledge and behaviour towards the development outcome?</span>
       </div>
-      <div class="lvl lvl-4">
+      <div class="lvl lvl-4" data-reveal style="--reveal-delay:1s">
+        <span class="topbar" data-grow-w style="width:100%; --reveal-delay:1.25s"></span>
         <span class="tag">Level 4</span>
         <span class="name">Impact Evaluation</span>
         <span class="desc">Do users with access to the product improve development outcomes?</span>
       </div>
     </div>
 
-    <div class="footnote">
+    <div class="footnote" data-reveal style="--reveal-delay:1.5s">
       <span class="mark"></span>
       <span>Today's hands-on work lives at <strong>Level 1</strong>: you will test whether an AI system performs as intended on your own documents.</span>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

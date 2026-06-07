@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>The arc of tools</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   .timeline {
@@ -13,11 +14,10 @@
     display: flex; align-items: flex-start; justify-content: space-between;
     padding: 0 20px;
   }
-  /* the horizontal line */
-  .timeline::before {
-    content: '';
+  /* the horizontal line (real element so it can draw in) */
+  .timeline .track {
     position: absolute;
-    top: 17px; left: 60px; right: 60px;
+    top: 17px; left: 60px;
     height: 3px; background: var(--border);
   }
   .node {
@@ -66,35 +66,36 @@
 </head>
 <body>
   <div class="slide">
-    <p class="eyebrow">Part 1 &middot; AI 101</p>
-    <h1>We have always built tools that <span class="accent">extend us</span></h1>
+    <p class="eyebrow" data-reveal>Part 1 &middot; AI 101</p>
+    <h1 data-reveal>We have always built tools that <span class="accent">extend us</span></h1>
 
     <div class="timeline">
-      <div class="node">
+      <div class="track" data-grow-w style="width:calc(100% - 120px); --reveal-delay:.35s"></div>
+      <div class="node" data-reveal style="--reveal-delay:.7s">
         <span class="dot"></span>
         <span class="when">1.7M years ago</span>
         <span class="what">Hand axe</span>
         <span class="extend">Extends the hand</span>
       </div>
-      <div class="node">
+      <div class="node" data-reveal style="--reveal-delay:.95s">
         <span class="dot"></span>
         <span class="when">~5,000 years</span>
         <span class="what">Writing</span>
         <span class="extend">Extends memory</span>
       </div>
-      <div class="node">
+      <div class="node" data-reveal style="--reveal-delay:1.2s">
         <span class="dot"></span>
         <span class="when">1450s</span>
         <span class="what">Printing press</span>
         <span class="extend">Extends reach</span>
       </div>
-      <div class="node">
+      <div class="node" data-reveal style="--reveal-delay:1.45s">
         <span class="dot"></span>
         <span class="when">1940s</span>
         <span class="what">Computer</span>
         <span class="extend">Extends calculation</span>
       </div>
-      <div class="node now">
+      <div class="node now" data-reveal="scale" style="--reveal-delay:1.85s">
         <span class="dot"></span>
         <span class="chip">Now</span>
         <span class="what">Generative AI</span>
@@ -102,11 +103,12 @@
       </div>
     </div>
 
-    <div class="footnote">
+    <div class="footnote" data-reveal style="--reveal-delay:2.15s">
       <span class="mark"></span>
       <span>AI sits on a long continuum. What is new is that it works in natural language, which is your medium as a researcher.</span>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

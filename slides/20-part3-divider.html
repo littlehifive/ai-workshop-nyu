@@ -4,8 +4,13 @@
 <meta charset="utf-8">
 <title>Part 3 divider</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
+  body.dark {
+    background:
+      radial-gradient(120% 100% at 30% 35%, var(--navy-deep) 0%, var(--navy-deepest) 80%);
+  }
   body.dark .slide { justify-content: center; position: relative; }
   .topbar {
     position: absolute;
@@ -46,20 +51,21 @@
 </head>
 <body class="dark">
   <div class="slide">
-    <div class="topbar">
+    <div class="topbar" data-reveal>
       <span class="tick"></span>
       <span class="wordmark">Agentic Workflows Club</span>
     </div>
 
-    <p class="part-eyebrow">Part 3 &middot; Hands-On</p>
-    <p class="assertion">You believe what you <span class="accent">verify</span>, so let us verify it together.</p>
+    <p class="part-eyebrow" data-reveal>Part 3 &middot; Hands-On</p>
+    <p class="assertion" data-reveal="scale" style="--reveal-delay:.35s">You believe what you <span class="accent">verify</span>, so let us verify it together.</p>
 
-    <div class="ground-rules">
+    <div class="ground-rules" data-reveal style="--reveal-delay:.85s">
       <p class="rule"><span class="lead">Non-sensitive documents only.</span> Nothing you couldn't email a colleague.</p>
       <p class="rule"><span class="lead">Work in pairs.</span> Two people notice more than one.</p>
       <p class="rule"><span class="lead">Write down every failure.</span> Each failure is useful data.</p>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

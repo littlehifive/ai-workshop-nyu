@@ -44,6 +44,8 @@
     { file: "slides/24-red-teaming.html", label: "Activity 3 · Red-teaming" },
     { file: "slides/26-shareout.html", label: "Share-out" },
     { file: "slides/27-caveats.html", label: "Three caveats" },
+    { file: "slides/28a-system3.html", label: "System 3" },
+    { file: "slides/28b-surrender.html", label: "The scissors effect" },
     { file: "slides/28-closing.html", label: "Closing" },
   ];
   window.DECK_WIDTH = 1920;
@@ -124,8 +126,13 @@
 
   /* ════════ present mode ════════ */
   #stage { position: fixed; top: 50%; left: 50%; transform-origin: top left; will-change: transform; background: #fff; box-shadow: 0 10px 60px rgba(0,0,0,0.4); }
-  #stage iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff; opacity: 1; transition: opacity .12s ease; }
+  #stage iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff;
+    opacity: 1; transform: translateX(0) scale(1);
+    transition: opacity .3s cubic-bezier(.2,.7,.2,1), transform .3s cubic-bezier(.2,.7,.2,1); }
   #stage iframe.loading { opacity: 0; transition: none; }
+  #stage iframe.loading.enter-next { transform: translateX(44px) scale(0.992); }
+  #stage iframe.loading.enter-prev { transform: translateX(-44px) scale(0.992); }
+  #stage iframe.loading.enter-jump { transform: scale(0.97); }
   .counter { position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.65); color: #fff; padding: 6px 14px; border-radius: 999px; font-size: 13px; letter-spacing: 0.05em; font-variant-numeric: tabular-nums; z-index: 100; opacity: 0.7; }
   .counter .label { color: rgba(255,255,255,0.7); margin-left: 8px; }
   .overview-btn { position: fixed; top: 20px; left: 20px; background: rgba(0,0,0,0.55); color: rgba(255,255,255,0.85); border: 0; padding: 7px 14px; border-radius: 999px; font-size: 13px; font-family: inherit; cursor: pointer; z-index: 100; opacity: 0.6; }
@@ -331,24 +338,33 @@
   // Slides report via postMessage (direct iframe access is blocked under file://):
   //  - deckFontsReady: reveal the slide only once its fonts are loaded (no font flash)
   //  - deckKey: navigation keys pressed while focus is inside the slide iframe
+  const unveil = () => {
+    frame.classList.remove('loading');
+    // drop the direction class after the transition so it never lingers
+    setTimeout(() => frame.classList.remove('enter-next', 'enter-prev', 'enter-jump'), 350);
+  };
   frame.addEventListener('load', () => {
-    setTimeout(() => frame.classList.remove('loading'), 600); // safety: never stay hidden
+    setTimeout(unveil, 600); // safety: never stay hidden
   });
   window.addEventListener('message', (e) => {
     const d = e.data || {};
-    if (d.deckFontsReady) frame.classList.remove('loading');
+    if (d.deckFontsReady) unveil();
     if (d.deckKey) document.dispatchEvent(new KeyboardEvent('keydown', { key: d.deckKey, bubbles: true }));
   });
-  function show(idx) {
+  function show(idx, dir) {
     if (idx < 0 || idx >= deck.length) return;
     current = idx;
-    if (frame.getAttribute('src') !== deck[idx].file) { frame.classList.add('loading'); frame.src = deck[idx].file; }
+    if (frame.getAttribute('src') !== deck[idx].file) {
+      frame.classList.remove('enter-next', 'enter-prev', 'enter-jump');
+      frame.classList.add('loading', dir === 1 ? 'enter-next' : dir === -1 ? 'enter-prev' : 'enter-jump');
+      frame.src = deck[idx].file;
+    }
     counter.innerHTML = (idx + 1) + ' / ' + deck.length + ' <span class="label">' + (deck[idx].label || '') + '</span>';
     try { localStorage.setItem(storageKey, String(idx)); } catch (_) {}
     if (location.hash !== '#' + (idx + 1)) history.replaceState(null, '', '#' + (idx + 1));
   }
-  function next() { show(Math.min(current + 1, deck.length - 1)); }
-  function prev() { show(Math.max(current - 1, 0)); }
+  function next() { show(Math.min(current + 1, deck.length - 1), 1); }
+  function prev() { show(Math.max(current - 1, 0), -1); }
 
   document.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;

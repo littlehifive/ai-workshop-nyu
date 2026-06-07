@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Activity 1 · Prompt makeover</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   .a-header { margin-bottom: 50px; }
@@ -62,34 +63,189 @@
     font-size: 32px; font-weight: 600; line-height: 1.38; color: var(--navy);
     margin: 0;
   }
+
+  /* Interactive BEFORE/AFTER demo */
+  .demo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 30px 32px 34px;
+  }
+  .demo-label {
+    font-size: 18px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 18px;
+  }
+  .tabs { display: flex; gap: 10px; margin: 0 0 24px; }
+  .tab {
+    flex: 1; cursor: pointer; user-select: none;
+    font-size: 19px; font-weight: 700; text-align: center;
+    padding: 13px 10px; border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-subtle); color: var(--ink-secondary);
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .tab:hover { border-color: var(--gold); }
+  .tab.active {
+    background: var(--navy); color: var(--white); border-color: var(--navy);
+  }
+  .prompt-card {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 20px 22px;
+    min-height: 196px;
+  }
+  .prompt-card .pc-head {
+    font-size: 16px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 14px;
+  }
+  .pc-line {
+    font-size: 22px; font-weight: 500; line-height: 1.4; color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .pc-line .tagk { color: var(--navy); font-weight: 700; }
+  .pc-line:last-child { margin-bottom: 0; }
+  .pc-empty { color: var(--ink-muted); }
+
+  .meter { margin: 22px 0 0; }
+  .meter-row { display: flex; align-items: center; gap: 16px; margin: 0 0 14px; }
+  .meter-row:last-child { margin-bottom: 0; }
+  .meter-name {
+    font-size: 17px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-secondary);
+    width: 158px; flex-shrink: 0;
+  }
+  .meter-track {
+    flex: 1; height: 16px; border-radius: 8px;
+    background: var(--surface-subtle); border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .meter-fill {
+    height: 100%; border-radius: 8px; background: var(--gold);
+    transition: width 0.4s cubic-bezier(0.2,0.7,0.2,1);
+  }
+  .meter-val {
+    font-size: 17px; font-weight: 700; color: var(--ink-secondary);
+    width: 44px; text-align: right; font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
 </style>
 </head>
 <body>
   <div class="slide">
     <div class="a-header">
-      <p class="a-eyebrow">Activity 1 &middot; 10 Min</p>
-      <h1 class="a-title">Prompt makeover</h1>
-      <p class="a-goal">See how much of an answer's quality comes from the quality of your request.</p>
+      <p class="a-eyebrow" data-reveal>Activity 1 &middot; 10 Min</p>
+      <h1 class="a-title" data-reveal>Prompt makeover</h1>
+      <p class="a-goal" data-reveal>See how much of an answer's quality comes from the quality of your request.</p>
     </div>
 
     <div class="columns">
       <div class="steps-col">
         <ol class="steps">
-          <li><span class="num">1</span><span class="step-text">Open an AI tool <span class="em">you already know</span> (ChatGPT, Claude, Gemini, or Copilot)</span></li>
-          <li><span class="num">2</span><span class="step-text">Write a quick, minimal version of a real request from your work, and run it</span></li>
-          <li><span class="num">3</span><span class="step-text">Rewrite the request with four elements: who you are, the context that matters, the format you want, and one example</span></li>
-          <li><span class="num">4</span><span class="step-text">Run it again and compare the two outputs side by side</span></li>
+          <li data-reveal><span class="num">1</span><span class="step-text">Open an AI tool <span class="em">you already know</span> (ChatGPT, Claude, Gemini, or Copilot)</span></li>
+          <li data-reveal><span class="num">2</span><span class="step-text">Write a quick, minimal version of a real request from your work, and run it</span></li>
+          <li data-reveal><span class="num">3</span><span class="step-text">Rewrite the request with four elements: who you are, the context that matters, the format you want, and one example</span></li>
+          <li data-reveal><span class="num">4</span><span class="step-text">Run it again and compare the two outputs side by side</span></li>
         </ol>
       </div>
 
       <div class="side-col">
-        <div class="debrief">
+        <div class="demo" data-reveal="right" style="--reveal-delay:.7s">
+          <p class="demo-label">Schematic example</p>
+          <div class="tabs">
+            <div class="tab" data-tab="vague">Vague request</div>
+            <div class="tab" data-tab="structured">Structured request</div>
+          </div>
+
+          <div class="prompt-card">
+            <p class="pc-head" id="pcHead">Prompt</p>
+            <div id="pcBody"></div>
+          </div>
+
+          <div class="meter">
+            <div class="meter-row">
+              <span class="meter-name">Specificity</span>
+              <span class="meter-track"><span class="meter-fill" id="mSpec"></span></span>
+              <span class="meter-val" id="vSpec"></span>
+            </div>
+            <div class="meter-row">
+              <span class="meter-name">Usefulness</span>
+              <span class="meter-track"><span class="meter-fill" id="mUse"></span></span>
+              <span class="meter-val" id="vUse"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="debrief" data-reveal="right" style="--reveal-delay:.85s">
           <p class="label">Debrief</p>
           <p class="q">What changed most: the accuracy, the tone, or the usefulness?</p>
         </div>
       </div>
     </div>
   </div>
+<script>
+/* Interactive BEFORE/AFTER prompt demo. Click-only. Default tab: structured. */
+(function () {
+  var DATA = {
+    vague: {
+      head: 'Prompt',
+      body: [
+        '<p class="pc-line pc-empty">"Write something about our program for the newsletter."</p>'
+      ],
+      spec: 28, use: 34
+    },
+    structured: {
+      head: 'Prompt',
+      body: [
+        '<p class="pc-line"><span class="tagk">Who:</span> a program officer at a funder.</p>',
+        '<p class="pc-line"><span class="tagk">Context:</span> rural clinic pilot, 6 months, 1,200 patients.</p>',
+        '<p class="pc-line"><span class="tagk">Format:</span> 120-word newsletter blurb, plain language.</p>',
+        '<p class="pc-line"><span class="tagk">Example:</span> "In March, the team reached..."</p>'
+      ],
+      spec: 88, use: 91
+    }
+  };
+  var head = document.getElementById('pcHead');
+  var bodyEl = document.getElementById('pcBody');
+  var mSpec = document.getElementById('mSpec'), vSpec = document.getElementById('vSpec');
+  var mUse = document.getElementById('mUse'), vUse = document.getElementById('vUse');
+  var tabs = document.querySelectorAll('.tab');
+
+  function render(key, animateGrow) {
+    var d = DATA[key];
+    head.textContent = d.head;
+    bodyEl.innerHTML = d.body.join('');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].classList.toggle('active', tabs[i].getAttribute('data-tab') === key);
+    }
+    vSpec.textContent = d.spec; vUse.textContent = d.use;
+    if (animateGrow) {
+      // bars use data-grow-w on first paint; afterwards set width directly
+      mSpec.style.width = d.spec + '%';
+      mUse.style.width = d.use + '%';
+    }
+  }
+
+  // Default tab so the slide reads complete (also the PDF state).
+  var DEFAULT = 'structured';
+  // Prime grow attributes on the fills for the entrance animation.
+  mSpec.setAttribute('data-grow-w', '');
+  mSpec.style.width = DATA[DEFAULT].spec + '%';
+  mUse.setAttribute('data-grow-w', '');
+  mUse.style.width = DATA[DEFAULT].use + '%';
+  render(DEFAULT, false);
+
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function () {
+      render(this.getAttribute('data-tab'), true);
+    });
+  }
+})();
+</script>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>From autocomplete to assistant</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   .asst-flow {
@@ -39,39 +40,39 @@
 </head>
 <body>
   <div class="slide">
-    <p class="eyebrow">Part 1 &middot; AI 101</p>
-    <h1>People shaped raw prediction into an <span class="accent">assistant</span></h1>
+    <p class="eyebrow" data-reveal>Part 1 &middot; AI 101</p>
+    <h1 data-reveal>People shaped raw prediction into an <span class="accent">assistant</span></h1>
 
     <div class="asst-flow">
-      <div class="asst-card">
+      <div class="asst-card" data-reveal style="--reveal-delay:.25s">
         <span class="asst-num">1</span>
         <span class="asst-stage">Pretraining</span>
         <span class="asst-name">Read most of the internet</span>
         <span class="asst-desc">It learns the patterns of language from a vast sweep of text.</span>
       </div>
 
-      <div class="asst-arrow">
+      <div class="asst-arrow" data-reveal="left" style="--reveal-delay:.6s">
         <svg width="72" height="40" viewBox="0 0 72 40" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 20 H56" stroke="#F1B505" stroke-width="6" stroke-linecap="round"/>
           <path d="M52 6 L70 20 L52 34" fill="none" stroke="#F1B505" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
 
-      <div class="asst-card">
+      <div class="asst-card" data-reveal style="--reveal-delay:.85s">
         <span class="asst-num">2</span>
         <span class="asst-stage">Instruction tuning</span>
         <span class="asst-name">Learn to follow requests</span>
         <span class="asst-desc">It is shaped to take an instruction and actually answer it.</span>
       </div>
 
-      <div class="asst-arrow">
+      <div class="asst-arrow" data-reveal="left" style="--reveal-delay:1.2s">
         <svg width="72" height="40" viewBox="0 0 72 40" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 20 H56" stroke="#F1B505" stroke-width="6" stroke-linecap="round"/>
           <path d="M52 6 L70 20 L52 34" fill="none" stroke="#F1B505" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
 
-      <div class="asst-card">
+      <div class="asst-card" data-reveal style="--reveal-delay:1.45s">
         <span class="asst-num">3</span>
         <span class="asst-stage">Human feedback</span>
         <span class="asst-name">Learn what people prefer</span>
@@ -79,11 +80,12 @@
       </div>
     </div>
 
-    <div class="footnote">
+    <div class="footnote" data-reveal style="--reveal-delay:1.75s">
       <span class="mark"></span>
       <span>Helpfulness and tone are <strong>trained into the model</strong> by its makers. The assistant is a designed artifact, and its designers' choices are built into how it responds.</span>
     </div>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

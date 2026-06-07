@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Warm-up</title>
 <link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
 <link rel="stylesheet" href="shared/taf.css">
 <style>
   .warm-grid {
@@ -23,8 +24,9 @@
     display: flex; flex-direction: column; gap: 28px;
   }
   .warm-card .qnum {
-    font-size: 56px; font-weight: 900; color: var(--gold);
-    line-height: 1; letter-spacing: -0.02em;
+    font-size: 76px; font-weight: 900; color: var(--gold);
+    line-height: 1; letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
   }
   .warm-card .qtext {
     font-size: 36px; font-weight: 600; line-height: 1.32; color: var(--navy);
@@ -39,26 +41,27 @@
 </head>
 <body>
   <div class="slide">
-    <p class="eyebrow">Before We Start</p>
-    <h1>Three questions for the <span class="accent">room</span></h1>
+    <p class="eyebrow" data-reveal>Before We Start</p>
+    <h1 data-reveal>Three questions for the <span class="accent">room</span></h1>
 
     <div class="warm-grid">
-      <div class="warm-card">
+      <div class="warm-card hoverable" data-reveal>
         <span class="qnum">1</span>
         <p class="qtext">Did you use an AI tool this week? For what?</p>
       </div>
-      <div class="warm-card">
+      <div class="warm-card hoverable" data-reveal>
         <span class="qnum">2</span>
         <p class="qtext">What is one thing you don&rsquo;t trust about AI?</p>
       </div>
-      <div class="warm-card">
+      <div class="warm-card hoverable" data-reveal>
         <span class="qnum">3</span>
         <p class="qtext">What is one task in your research you would gladly hand to a capable assistant?</p>
       </div>
     </div>
 
-    <p class="presenter-note">Collect answers on a whiteboard; revisit at the end.</p>
+    <p class="presenter-note" data-reveal>Collect answers on a whiteboard; revisit at the end.</p>
   </div>
+<script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
    parent shell via postMessage (direct iframe access is blocked under file://). */

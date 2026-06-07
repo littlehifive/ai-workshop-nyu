@@ -62,7 +62,7 @@ async function main() {
   const pageBuffers = [];
   for (const f of files) {
     const page = await ctx.newPage();
-    const url = 'file://' + path.join(slidesDir, f);
+    const url = 'file://' + path.join(slidesDir, f) + '?static=1';
     await page.goto(url, { waitUntil: 'networkidle' }).catch(() => page.goto(url));
     await page.waitForTimeout(1200);  // web-font paint
     // emulate "screen" so CSS colors/backgrounds render the same as browser

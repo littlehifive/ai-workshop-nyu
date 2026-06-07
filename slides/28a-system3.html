@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Three systems of thinking</title>
+<link rel="stylesheet" href="shared/fonts.css">
+<link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
+<style>
+  :root { --brick: #B3361F; }
+  .slide { padding: 80px 120px 64px; }
+  .header { margin-bottom: 36px; }
+  .eyebrow {
+    font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 18px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 60px; font-weight: 800; line-height: 1.04; letter-spacing: -0.02em;
+    color: var(--navy); max-width: 1500px;
+  }
+
+  /* Pathway rows */
+  .systems { display: flex; flex-direction: column; gap: 16px; margin: 0 0 38px; }
+  .sys-row {
+    display: flex; align-items: center; gap: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 10px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 22px 34px;
+  }
+  .sys-row.s2 { border-left-color: var(--navy); }
+  .sys-row.s3 { border-left-color: var(--brick); }
+  .sys-tag {
+    font-size: 24px; font-weight: 800; letter-spacing: 0.04em;
+    color: var(--navy); width: 360px; flex-shrink: 0;
+  }
+  .sys-tag .n {
+    display: block; font-size: 17px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px;
+  }
+  .sys-desc {
+    font-size: 27px; font-weight: 500; line-height: 1.34; color: var(--ink-secondary);
+  }
+  .sys-desc .k { color: var(--ink); font-weight: 700; }
+
+  /* Two-route comparison */
+  .routes { display: flex; gap: 40px; }
+  .route {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 26px 32px 28px;
+  }
+  .route.risk { border-color: #E6BCB3; }
+  .route-title {
+    font-size: 25px; font-weight: 800; color: var(--navy);
+    margin: 0 0 4px;
+  }
+  .route.risk .route-title { color: var(--brick); }
+  .route-sub {
+    font-size: 17px; font-weight: 700; letter-spacing: 0.10em;
+    text-transform: uppercase; color: var(--ink-muted);
+    margin: 0 0 22px;
+  }
+  .flow { display: flex; align-items: center; margin: 0 0 18px; }
+  .node {
+    font-size: 19px; font-weight: 700; line-height: 1.2;
+    text-align: center; color: var(--navy);
+    background: var(--surface-subtle);
+    border: 1.5px solid var(--border); border-radius: 9px;
+    padding: 13px 12px; flex-shrink: 0;
+  }
+  .node.you { background: #FDF3D2; border-color: var(--gold); }
+  .node.ans { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .node.s3 { border-color: var(--brick); color: var(--brick); }
+  .node.muted {
+    color: var(--ink-muted); background: var(--surface-subtle);
+    border-style: dashed; border-color: #CED4DA;
+    text-decoration: line-through; text-decoration-color: #ADB5BD;
+  }
+  .connector {
+    flex: 1; height: 4px; border-radius: 2px;
+    background: var(--navy); min-width: 18px;
+  }
+  .route.risk .connector { background: var(--brick); }
+  .connector.bypass { background: #CED4DA; }
+  .route-caption {
+    font-size: 22px; font-weight: 600; line-height: 1.34; color: var(--ink-secondary);
+    margin: 4px 0 0;
+  }
+  .route.risk .route-caption { color: var(--brick); }
+
+  .attrib {
+    margin: 26px 0 0;
+    font-size: 19px; font-weight: 500; color: var(--ink-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header">
+      <p class="eyebrow" data-reveal>Part 4 &middot; Takeaways</p>
+      <h1 data-reveal>AI is becoming a third system of thinking</h1>
+    </div>
+
+    <div class="systems">
+      <div class="sys-row s1" data-reveal>
+        <div class="sys-tag"><span class="n">System 1</span>Fast and automatic</div>
+        <div class="sys-desc"><span class="k">Intuition.</span> Milliseconds, no effort.</div>
+      </div>
+      <div class="sys-row s2" data-reveal>
+        <div class="sys-tag"><span class="n">System 2</span>Slow and deliberate</div>
+        <div class="sys-desc"><span class="k">Reasoning.</span> Seconds to minutes, high effort.</div>
+      </div>
+      <div class="sys-row s3" data-reveal>
+        <div class="sys-tag"><span class="n">System 3</span>AI-mediated</div>
+        <div class="sys-desc"><span class="k">The model thinks; you receive.</span> Zero effort on your side.</div>
+      </div>
+    </div>
+
+    <div class="routes">
+      <div class="route" data-reveal style="--reveal-delay:.8s">
+        <p class="route-title">Cognitive offloading (healthy)</p>
+        <p class="route-sub">Your reasoning stays engaged</p>
+        <div class="flow">
+          <span class="node you">You</span>
+          <span class="connector" data-grow-w style="width:100%; --reveal-delay:1.0s"></span>
+          <span class="node s3">System&nbsp;3<br>assists</span>
+          <span class="connector" data-grow-w style="width:100%; --reveal-delay:1.1s"></span>
+          <span class="node">System&nbsp;2<br>checks</span>
+          <span class="connector" data-grow-w style="width:100%; --reveal-delay:1.2s"></span>
+          <span class="node ans">Your<br>answer</span>
+        </div>
+        <p class="route-caption">Your reasoning stays in the loop.</p>
+      </div>
+
+      <div class="route risk" data-reveal style="--reveal-delay:.95s">
+        <p class="route-title">Cognitive surrender (the risk)</p>
+        <p class="route-sub">Your reasoning is bypassed</p>
+        <div class="flow">
+          <span class="node you">You</span>
+          <span class="connector" data-grow-w style="width:100%; --reveal-delay:1.15s"></span>
+          <span class="node s3">System&nbsp;3<br>decides</span>
+          <span class="connector bypass" data-grow-w style="width:100%; --reveal-delay:1.25s"></span>
+          <span class="node muted">System&nbsp;2<br>checks</span>
+          <span class="connector" data-grow-w style="width:100%; --reveal-delay:1.35s"></span>
+          <span class="node ans">Your<br>answer</span>
+        </div>
+        <p class="route-caption">The decision transfers without you noticing.</p>
+      </div>
+    </div>
+
+    <p class="attrib" data-reveal style="--reveal-delay:1.5s">Framework: Shaw &amp; Nave, Wharton, 2026.</p>
+  </div>
+<script src="shared/anim.js"></script>
+<script>
+/* Deck-shell integration: forward navigation keys and font-ready state to the
+   parent shell via postMessage (direct iframe access is blocked under file://). */
+(function () {
+  if (window.parent === window) return;
+  document.addEventListener('keydown', function (e) {
+    var nav = ['ArrowRight', 'ArrowLeft', ' ', 'PageDown', 'PageUp', 'Home', 'End', 'Escape'];
+    if (nav.indexOf(e.key) !== -1 || /^[1-9]$/.test(e.key) || e.key === 'p' || e.key === 'P') {
+      e.preventDefault();
+      window.parent.postMessage({ deckKey: e.key }, '*');
+    }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.parent.postMessage({ deckFontsReady: true }, '*'); });
+  } else {
+    window.parent.postMessage({ deckFontsReady: true }, '*');
+  }
+})();
+</script>
+</body>
+</html>
