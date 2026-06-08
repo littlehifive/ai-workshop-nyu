@@ -169,12 +169,15 @@
   .counter .label { color: rgba(255,255,255,0.7); margin-left: 8px; }
   .overview-btn { position: fixed; top: 20px; left: 20px; background: rgba(0,0,0,0.55); color: rgba(255,255,255,0.85); border: 0; padding: 7px 14px; border-radius: 999px; font-size: 13px; font-family: inherit; cursor: pointer; z-index: 100; opacity: 0.6; }
   .overview-btn:hover { opacity: 1; }
-  .nav-zone { position: fixed; top: 0; bottom: 0; width: 15%; cursor: pointer; z-index: 50; }
+  /* The edge strip itself is transparent to clicks so interactive slide content
+     (e.g. an activity timer in a corner) stays clickable. Only the visible arrow
+     circle navigates; its click bubbles to the strip's handler. */
+  .nav-zone { position: fixed; top: 0; bottom: 0; width: 15%; z-index: 50; pointer-events: none; }
   .nav-zone.left { left: 0; } .nav-zone.right { right: 0; }
-  .nav-hint { position: absolute; top: 50%; transform: translateY(-50%); width: 64px; height: 64px; border-radius: 999px; background: rgba(11,35,65,0.55); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 32px; line-height: 1; opacity: 0; transition: opacity .2s, background .2s; box-shadow: 0 2px 12px rgba(0,0,0,0.35); }
+  .nav-hint { position: absolute; top: 50%; transform: translateY(-50%); width: 64px; height: 64px; border-radius: 999px; background: rgba(11,35,65,0.55); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 32px; line-height: 1; opacity: 0; transition: opacity .2s, background .2s; box-shadow: 0 2px 12px rgba(0,0,0,0.35); pointer-events: auto; cursor: pointer; }
   .nav-zone.left .nav-hint { left: 24px; } .nav-zone.right .nav-hint { right: 24px; }
   body[data-mode="present"]:hover .nav-hint { opacity: 0.75; }
-  .nav-zone:hover .nav-hint { opacity: 1; background: rgba(11,35,65,0.85); }
+  body[data-mode="present"] .nav-hint:hover { opacity: 1; background: rgba(11,35,65,0.85); }
 
   @media print {
     @page { size: 1920px 1080px; margin: 0; }
