@@ -136,6 +136,13 @@
 </head>
 <body>
   <div class="slide">
+    <div class="timer" data-minutes="10" title="Click to start, pause, or resume">
+      <span class="t-num">10:00</span>
+      <div class="t-btns">
+        <button class="t-main" type="button">Start</button>
+        <button class="t-reset" type="button">Reset</button>
+      </div>
+    </div>
     <div class="a-header">
       <p class="a-eyebrow" data-reveal>Activity 1 &middot; 10 Min</p>
       <h1 class="a-title" data-reveal>Prompt makeover</h1>
@@ -245,6 +252,7 @@
   }
 })();
 </script>
+<script src="shared/timer.js"></script>
 <script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the

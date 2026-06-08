@@ -5,6 +5,7 @@
 <title>Activity</title>
 <link rel="stylesheet" href="shared/fonts.css">
 <link rel="stylesheet" href="shared/anim.css">
+<link rel="stylesheet" href="shared/taf.css">
 <style>
   :root {
     --navy: #003366;
@@ -155,6 +156,13 @@
 </head>
 <body>
   <div class="slide">
+    <div class="timer" data-minutes="15" title="Click to start, pause, or resume">
+      <span class="t-num">15:00</span>
+      <div class="t-btns">
+        <button class="t-main" type="button">Start</button>
+        <button class="t-reset" type="button">Reset</button>
+      </div>
+    </div>
     <div class="header">
       <p class="eyebrow" data-reveal>Activity 3 &middot; 15 Min</p>
       <h1 data-reveal>Red-teaming your own bot</h1>
@@ -236,6 +244,7 @@
   select(0);
 })();
 </script>
+<script src="shared/timer.js"></script>
 <script src="shared/anim.js"></script>
 <script>
 /* Deck-shell integration: forward navigation keys and font-ready state to the
